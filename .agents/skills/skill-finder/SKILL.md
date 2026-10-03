@@ -1,32 +1,31 @@
 ---
 name: skill-finder
 description: >
-  Find the right Affitor skill for your goal. Triggers on:
+  Find the right skill for your goal. Triggers on:
   "which skill should I use", "find me a skill", "what skills are available",
   "help me choose a skill", "skill for SEO", "skill for email", "explore skills",
-  "I'm new to Affitor", "what can Affitor do", "search skills",
+  "I'm new here", "what can these skills do", "search skills",
   "skill for blog writing", "skill for landing pages", "skill for analytics".
 license: MIT
 version: "1.0.0"
 tags: ["affiliate-marketing", "meta", "planning", "compliance", "discovery", "skill-search"]
 compatibility: "Claude Code, ChatGPT, Gemini CLI, Cursor, Windsurf, OpenClaw, any AI agent"
 metadata:
-  author: affitor
   version: "1.0"
   stage: S8-Meta
 ---
 
 # Skill Finder
 
-Search and discover Affitor skills by task, stage, keyword, or natural language goal. Returns a ranked list of matching skills with descriptions, input requirements, and recommended next steps. Output is a concise Markdown guide.
+Search and discover skills by task, stage, keyword, or natural language goal. Returns a ranked list of matching skills with descriptions, input requirements, and recommended next steps. Output is a concise Markdown guide.
 
 ## Stage
 
-S8: Meta — The entry point to the entire Affitor ecosystem. New users don't know what's available. Experienced users forget skill names. Skill Finder bridges the gap — it reads the registry, matches intent to capability, and recommends the fastest path to the user's goal.
+S8: Meta — The entry point to the entire skill ecosystem. New users don't know what's available. Experienced users forget skill names. Skill Finder bridges the gap — it reads the catalog, matches intent to capability, and recommends the fastest path to the user's goal.
 
 ## When to Use
 
-- User is new to Affitor and asks "what can I do?" or "where do I start?"
+- User is new and asks "what can I do?" or "where do I start?"
 - User describes a goal but doesn't name a specific skill
 - User wants to find skills by stage (e.g., "what analytics skills exist?")
 - User asks "which skill helps with [topic]?"
@@ -48,7 +47,7 @@ goal: string                   # OPTIONAL — broader goal: "first commission" |
 
 ### Step 1: Load Skill Catalog
 
-Read `registry.json` from the repository root (or from conversation context if already loaded). Parse all skills with their stage, name, slug, and description.
+Read the skill catalog from `.agents/skills/` — each skill's `SKILL.md` frontmatter (name, description, stage). Parse all skills with their stage, name, slug, and description.
 
 ### Step 2: Match Query to Skills
 
@@ -56,7 +55,7 @@ Match the user's `query` against:
 1. Skill names and slugs (exact match → top priority)
 2. Skill descriptions (keyword overlap)
 3. Stage labels and descriptions (if user is browsing by stage)
-4. Inferred intent (e.g., "SEO" → `seo-audit`, `affiliate-blog-builder`)
+4. Inferred intent (e.g., "SEO" → `seo-audit`)
 
 If `stage_filter` is provided, restrict results to that stage.
 
@@ -85,7 +84,7 @@ Present top 3-5 matching skills with:
 
 Before presenting output, verify:
 
-- [ ] All matched skills exist in the current registry
+- [ ] All matched skills exist in `.agents/skills/`
 - [ ] Example prompts are copy-paste ready and grammatically correct
 - [ ] Recommended path follows logical funnel sequence
 - [ ] Relevance ranking: exact match > partial match > related
@@ -130,7 +129,7 @@ recommended_path:
 ### Example 1: Specific task query
 
 **User**: "I want to write a blog review of an AI tool"
-**Action**: Match → `affiliate-blog-builder` (S3, exact), `comparison-post-writer` (S3, related), `viral-post-writer` (S2, related). Show top 3 with example prompts. Recommend: "Start with S1 `affiliate-program-search` to find the best program, then use S3 `affiliate-blog-builder` for the review."
+**Action**: Match → `content-research-brief` (S2, exact), `viral-post-writer` (S2, related). Show top matches with example prompts. Recommend: "Start with S1 `affiliate-program-search` to find the best program, then use `content-research-brief` to research the review."
 
 ### Example 2: Stage browsing
 
@@ -140,12 +139,7 @@ recommended_path:
 ### Example 3: Goal-oriented
 
 **User**: "I'm new to affiliate marketing, where do I start?"
-**Action**: Recommend the beginner path: S1 (`affiliate-program-search`) → S2 (`viral-post-writer`) → S3 (`affiliate-blog-builder`) → S5 (`bio-link-deployer`). Explain each step in one sentence.
-
-## References
-
-- `registry.json` — Machine-readable skill catalog. Read in Step 1.
-- `shared/references/flywheel-connections.md` — master flywheel connection map
+**Action**: Recommend the beginner path: S1 (`affiliate-program-search`) → S2 (`viral-post-writer`) → S5 (`bio-link-deployer`). Explain each step in one sentence.
 
 ## Revenue & Action Plan
 
@@ -171,7 +165,7 @@ After running 3-5 skills in sequence: do you have a live affiliate link? Is it g
 - Any skill — `matched_skill` routes the user to the right skill
 
 ### Fed By
-- `registry.json` — skill catalog with all 44 skills across 8 stages
+- `.agents/skills/` — the skill catalog installed in the repository
 
 ### Feedback Loop
 - Track which skills are most frequently requested → surface popular skills higher in recommendations

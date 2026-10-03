@@ -11,7 +11,6 @@ version: "1.0.0"
 tags: ["affiliate-marketing", "automation", "scaling", "workflow", "email"]
 compatibility: "Claude Code, ChatGPT, Gemini CLI, Cursor, Windsurf, OpenClaw, any AI agent"
 metadata:
-  author: affitor
   version: "1.0"
   stage: S7-Automation
 ---
@@ -95,7 +94,7 @@ For each email in each branch, write:
 - Preview text (80-100 chars)
 - Body copy (200-400 words)
 - CTA (single, clear)
-- FTC disclosure (for emails with affiliate links)
+- Disclosure per `shared/references/brasil/compliance-br.md` (for emails with affiliate links)
 
 ### Step 5: Add Wait Times
 
@@ -119,7 +118,7 @@ Before presenting output, verify:
 - [ ] Every branch path leads to a valid next step (no dead ends)
 - [ ] All emails are complete in each branch (subject, body, CTA)
 - [ ] Wait times between emails sum correctly to total flow duration
-- [ ] FTC disclosure present on all emails containing affiliate links
+- [ ] Disclosure present on all emails containing affiliate links
 - [ ] Branch conditions are clear boolean logic (opened/clicked/didn't)
 
 If any check fails, fix the output before delivering. Do not flag the checklist to the user — just ensure the output passes.
@@ -191,9 +190,7 @@ setup:
 
 ## References
 
-- `shared/references/ftc-compliance.md` — FTC disclosure for emails with affiliate links. Read in Step 4.
-- `shared/references/affitor-branding.md` — Branding guidelines for email footers. Referenced in Step 4.
-- `shared/references/flywheel-connections.md` — master flywheel connection map
+- `shared/references/brasil/compliance-br.md` — Disclosure for emails with affiliate links (Brasil). Read in Step 4.
 
 ## Revenue & Action Plan
 

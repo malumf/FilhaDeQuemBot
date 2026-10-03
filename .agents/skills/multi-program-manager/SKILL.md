@@ -12,7 +12,6 @@ version: "1.0.0"
 tags: ["affiliate-marketing", "automation", "scaling", "workflow", "portfolio", "multi-program"]
 compatibility: "Claude Code, ChatGPT, Gemini CLI, Cursor, Windsurf, OpenClaw, any AI agent"
 metadata:
-  author: affitor
   version: "1.0"
   stage: S7-Automation
 ---
@@ -107,7 +106,7 @@ Based on `budget_hours`, allocate weekly time:
 - Optimize programs get 20%
 - New program research gets 10%
 
-Provide specific weekly tasks tied to Affitor skills.
+Provide specific weekly tasks tied to the available skills.
 
 ### Step 6: Self-Validation
 
@@ -146,7 +145,7 @@ programs:
 recommendations:
   - action: string
     program: string
-    skill: string              # which Affitor skill to use
+    skill: string              # which skill to use
     task: string               # specific task
     priority: number           # 1 = highest
 
@@ -163,7 +162,7 @@ weekly_plan:
 1. **Portfolio Dashboard** — table with all programs, revenue, EPC, revenue share
 2. **Portfolio Health** — concentration risk, diversification, stability assessment
 3. **Program Scorecards** — per-program action (double down / maintain / optimize / phase out) with reason
-4. **Strategic Recommendations** — prioritized list of actions with Affitor skill references
+4. **Strategic Recommendations** — prioritized list of actions with skill references
 5. **Weekly Action Plan** — hour-by-hour allocation with specific tasks
 
 ## Error Handling
@@ -191,8 +190,7 @@ weekly_plan:
 
 ## References
 
-- `shared/references/affiliate-glossary.md` — Portfolio and commission terminology. Referenced in Step 2.
-- `shared/references/flywheel-connections.md` — master flywheel connection map
+- `shared/references/operacao/glossario-afiliados-br.md` — Portfolio and commission terminology. Referenced in Step 2.
 
 ## Flywheel Connections
 

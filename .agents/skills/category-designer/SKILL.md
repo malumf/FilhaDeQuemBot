@@ -12,14 +12,13 @@ version: "1.0.0"
 tags: ["affiliate-marketing", "meta", "planning", "compliance", "category-design", "positioning"]
 compatibility: "Claude Code, ChatGPT, Gemini CLI, Cursor, Windsurf, OpenClaw, any AI agent"
 metadata:
-  author: affitor
   version: "1.0"
   stage: S8-Meta
 ---
 
 # Category Designer
 
-Define a new category where your recommended product wins by default. Instead of competing on existing criteria ("best AI video tool"), reframe the buying decision so your product IS the category ("the AI avatar platform for non-creators"). Category kings capture 76% of category economics — this is the strategic meta-skill that makes all downstream marketing easier.
+Define a new category where your recommended product wins by default. Instead of competing on existing criteria ("best AI video tool"), reframe the buying decision so your product IS the category ("the AI avatar platform for non-creators"). This is the strategic meta-skill that makes all downstream marketing easier.
 
 ## Stage
 
@@ -30,8 +29,6 @@ S8: Meta — This is cross-cutting strategic thinking, like `funnel-planner`. It
 - User is competing in a crowded market and needs to stand out
 - User asks about "positioning", "category", "differentiation", "reframing"
 - User says "category of one", "own a category", "change the game"
-- After `monopoly-niche-finder` to formalize the niche into a named category
-- After `purple-cow-audit` to amplify what makes a product remarkable
 - Before creating content/offers to ensure consistent category messaging
 
 ## Input Schema
@@ -50,14 +47,7 @@ competitors: string[]         # OPTIONAL — main competitors
 
 your_audience: string         # OPTIONAL — your specific audience
                               # Default: inferred from product
-
-monopoly_niche: string        # OPTIONAL — from monopoly-niche-finder
-                              # Default: none
 ```
-
-**Chaining from S1 monopoly-niche-finder**: Use `monopoly_niche.intersection` as the starting point for category design.
-
-**Chaining from S1 purple-cow-audit**: Use `remarkable_angles` to identify category-defining features.
 
 ## Workflow
 
@@ -133,11 +123,6 @@ chain_metadata:
   skill_slug: "category-designer"
   stage: "meta"
   timestamp: string
-  suggested_next:
-    - "grand-slam-offer"
-    - "monopoly-niche-finder"
-    - "affiliate-blog-builder"
-    - "landing-page-creator"
 ```
 
 ## Output Format
@@ -193,7 +178,7 @@ When someone asks "[Product] vs [Competitor]":
 - **No product provided**: "Tell me the product and its current competitive landscape — I'll design a category it owns."
 - **Product has no unique features**: "Every product has something. Let me dig deeper..." → focus on audience specificity rather than feature uniqueness.
 - **Category too forced**: If the category feels artificial, recommend improving the product positioning within the existing category instead. Honesty > cleverness.
-- **Too many competitors in proposed category**: Narrow the audience further or combine with `monopoly-niche-finder` for a tighter intersection.
+- **Too many competitors in proposed category**: Narrow the audience further for a tighter intersection.
 
 ## Examples
 
@@ -203,13 +188,13 @@ When someone asks "[Product] vs [Competitor]":
 **Example 2:** "Position Semrush differently from Ahrefs"
 → Old: "SEO tool." New: "Revenue Intelligence Platform." Buying criteria: revenue attribution, not just rankings. Reframe: "Stop tracking keywords. Start tracking revenue."
 
-**Example 3:** "Create a category for my niche" (after monopoly-niche-finder)
-→ Take intersection niche, formalize into a named category with full narrative, buying criteria, and content roadmap.
+**Example 3:** "Create a category for my niche"
+→ Take the niche, formalize into a named category with full narrative, buying criteria, and content roadmap.
 
 ## Revenue & Action Plan
 
 ### Expected Outcomes
-- **Revenue potential**: Category kings capture 76% of category economics. If you define the category for your niche, your affiliate content becomes the default recommendation. Affiliates who "own" a category report 5-10x higher conversion rates because buyers see them as THE authority, not one of many
+- **Revenue potential**: If you define the category for your niche, your affiliate content becomes the default recommendation. Affiliates who "own" a category report 5-10x higher conversion rates because buyers see them as THE authority, not one of many
 - **Benchmark**: Category-defining content gets 3x more organic search traffic because you rank for new keywords nobody else targets. You're not competing for "best AI video tool" — you're ranking for your own category name
 - **Key metric to track**: Brand search volume (people searching YOUR category name or your brand + product) and affiliate conversion rate. Category owners see 5-8% conversion vs 1-2% for generic affiliates
 
@@ -222,21 +207,12 @@ When someone asks "[Product] vs [Competitor]":
 ### Track Your Results
 After 90 days: are people using your category name in conversations, searches, or social posts? After 6 months: has your affiliate conversion rate increased vs before category positioning? Category design is a long game — it compounds over months, not days.
 
-> **Next step — copy-paste this prompt:**
-> "Build an irresistible offer for [product] using this category positioning: [category POV]" → runs `grand-slam-offer`
-
 ## Flywheel Connections
 
 ### Feeds Into
-- `grand-slam-offer` (S4) — category framing becomes the offer's core positioning
-- `monopoly-niche-finder` (S1) — category definition sharpens niche targeting
-- `landing-page-creator` (S4) — category narrative for landing page hero
-- `affiliate-blog-builder` (S3) — content angles for category-establishing articles
 - `viral-post-writer` (S2) — category POV for shareable social content
 
 ### Fed By
-- `monopoly-niche-finder` (S1) — niche to formalize into a category
-- `purple-cow-audit` (S1) — remarkable features that define the category
 - `competitor-spy` (S1) — competitive landscape to differentiate from
 
 ### Feedback Loop
@@ -244,6 +220,4 @@ After 90 days: are people using your category name in conversations, searches, o
 
 ## References
 
-- `shared/references/affiliate-glossary.md` — Terminology
-- `shared/references/case-studies.md` — Real positioning examples
-- `shared/references/flywheel-connections.md` — Master connection map
+- `shared/references/operacao/glossario-afiliados-br.md` — Terminology

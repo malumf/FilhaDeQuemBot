@@ -12,7 +12,6 @@ version: "1.0.0"
 tags: ["affiliate-marketing", "automation", "scaling", "workflow", "ads", "ppc", "copywriting"]
 compatibility: "Claude Code, ChatGPT, Gemini CLI, Cursor, Windsurf, OpenClaw, any AI agent"
 metadata:
-  author: affitor
   version: "1.0"
   stage: S7-Automation
 ---
@@ -23,7 +22,7 @@ Write paid ad copy for affiliate offers — Facebook Ads, Google Search Ads, Goo
 
 ## Stage
 
-S7: Automation — When organic content proves profitable, paid ads let you scale 10x faster. But affiliate ad copy has unique constraints: platform policies around affiliate links, FTC disclosure requirements, and the need to drive clicks to a landing page (not direct-link). This skill writes compliant, high-converting ad copy for each platform.
+S7: Automation — When organic content proves profitable, paid ads let you scale 10x faster. But affiliate ad copy has unique constraints: platform policies around affiliate links, disclosure requirements (see `shared/references/brasil/compliance-br.md`), and the need to drive clicks to a landing page (not direct-link). This skill writes compliant, high-converting ad copy for each platform.
 
 ## When to Use
 
@@ -117,7 +116,7 @@ Create 3-5 variants per platform, each testing a different angle:
 Per platform:
 - **Facebook**: "Paid Partnership" label if required. No misleading claims. Landing page must match ad claims. Affiliate links may be flagged — use a bridge/landing page.
 - **Google**: Ad must match landing page content. No superlative claims without proof. Affiliate disclaimer on landing page required. Follow Google Ads affiliate policies.
-- **TikTok**: #ad or Paid Partnership toggle. No medical/financial advice. Must feel native to platform.
+- **TikTok**: disclosure text or Paid Partnership toggle. No medical/financial advice. Must feel native to platform.
 - **Pinterest**: Disclosures in pin description. Must link to content page, not direct affiliate link.
 
 ### Step 5: Suggest Targeting
@@ -193,7 +192,7 @@ budget_suggestion:
 
 ## Error Handling
 
-- **No landing URL**: "Most ad platforms don't allow direct affiliate links. I recommend creating a landing page first with S4 (landing-page-creator) and using that as your ad destination."
+- **No landing URL**: "Most ad platforms don't allow direct affiliate links. I recommend creating a landing page first and using that as your ad destination."
 - **Unknown platform**: "I support Facebook, Google Search, Google Display, TikTok, and Pinterest ads. Which platform would you like ad copy for?"
 - **Product with strict ad policies (supplements, finance)**: "This product category has strict advertising policies on [platform]. I'll write compliant copy, but review your ad account's specific restrictions before publishing. Avoid health/income claims."
 
@@ -212,13 +211,12 @@ budget_suggestion:
 ### Example 3: TikTok ad script
 
 **User**: "Write a TikTok ad for Notion targeting college students"
-**Action**: 30-second script. Hook (0-3s): "POV: You just discovered the app that replaced 5 other apps." Middle (3-20s): Show use cases (notes, calendar, to-do, project tracker). CTA (20-30s): "Link in bio for the student discount." #ad disclosure. Include compliance notes about TikTok's policies on educational content promotions.
+**Action**: 30-second script. Hook (0-3s): "POV: You just discovered the app that replaced 5 other apps." Middle (3-20s): Show use cases (notes, calendar, to-do, project tracker). CTA (20-30s): "Link in bio for the student discount." Disclosure per `shared/references/brasil/compliance-br.md`. Include compliance notes about TikTok's policies on educational content promotions.
 
 ## References
 
-- `shared/references/ftc-compliance.md` — FTC disclosure requirements for paid advertising. Read in Step 4.
-- `shared/references/affiliate-glossary.md` — Ad terminology (ROAS, CTR, CPC). Referenced in budget guide.
-- `shared/references/flywheel-connections.md` — master flywheel connection map
+- `shared/references/brasil/compliance-br.md` — Disclosure requirements for paid advertising (Brasil). Read in Step 4.
+- `shared/references/operacao/glossario-afiliados-br.md` — Ad terminology (ROAS, CTR, CPC). Referenced in budget guide.
 
 ## Revenue & Action Plan
 
@@ -229,7 +227,7 @@ budget_suggestion:
 
 ### Do This Right Now (15 min)
 1. **Launch a test campaign** with your top 2 ad variants at $10/day each
-2. **Set the destination URL** to your landing page (from `landing-page-creator`), NOT a direct affiliate link
+2. **Set the destination URL** to your landing page, NOT a direct affiliate link
 3. **Set a kill rule**: if a variant has 500+ impressions and <0.5% CTR after 48 hours, pause it
 4. **Set a scale rule**: if a variant achieves 2x+ ROAS after 5 days, increase budget by 50%
 
@@ -247,8 +245,6 @@ After 48 hours: kill any variant with <0.5% CTR. After 5 days: is any variant pr
 
 ### Fed By
 - `affiliate-program-search` (S1) — product data for ad copy
-- `grand-slam-offer` (S4) — offer framing for ad messaging
-- `landing-page-creator` (S4) — landing page URL as ad destination
 
 ### Feedback Loop
 - `conversion-tracker` (S6) measures ad ROAS → optimize ad copy, targeting, and budget allocation
@@ -273,5 +269,4 @@ chain_metadata:
   suggested_next:
     - "conversion-tracker"
     - "ab-test-generator"
-    - "landing-page-creator"
 ```

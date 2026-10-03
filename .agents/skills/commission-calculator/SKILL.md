@@ -13,7 +13,6 @@ version: "1.0.0"
 tags: ["affiliate-marketing", "research", "niche-analysis", "program-discovery", "commission", "revenue"]
 compatibility: "Claude Code, ChatGPT, Gemini CLI, Cursor, Windsurf, OpenClaw, any AI agent"
 metadata:
-  author: affitor
   version: "1.0"
   stage: S1-Research
 ---
@@ -66,7 +65,7 @@ This skill belongs to Stage S1: Research
 
 ### Step 1: Gather Program Details
 
-If program details are missing, pull from openaffiliate.dev (see `references/openaffiliate-api.md` in affiliate-program-search).
+If program details are missing, ask the user or use `web_search "[program name] affiliate program"` to find the official program page.
 
 Key fields to extract: `reward_value`, `reward_type`, `cookie_days`.
 
@@ -258,7 +257,7 @@ and what realistic first 90 days looks like]
 
 ## Next Steps
 
-1. Run `affiliate-program-search` to verify these programs are on openaffiliate.dev
+1. Run `affiliate-program-search` to compare and score these programs
 2. Run `niche-opportunity-finder` if you want to compare across niches, not just programs
 3. Start creating content — your first sale typically comes at [estimated timeframe]
 ```
@@ -269,7 +268,7 @@ and what realistic first 90 days looks like]
   Ask user for rough estimate ("Do you have any traffic yet, or are you starting from zero?")
 - **Commission is percentage but no product price:** Use web_search to estimate.
   If still unknown, run calculator with $50, $100, $200 placeholders and show sensitivity.
-- **Program not found on openaffiliate.dev:** Use web_search to find official affiliate
+- **Program details unknown:** Use web_search to find official affiliate
   program page. Extract commission from there.
 - **Unrealistic goal stated (e.g., "$10K/month in 30 days"):** Complete the calculation,
   then honestly flag the traffic required (e.g., "This would require 2M visitors/month —
@@ -303,15 +302,12 @@ User: "I want to make $1,000/month from affiliate marketing, how long will it ta
 
 ## References
 
-- `affiliate-program-search/references/openaffiliate-api.md` — fetch live program data from openaffiliate.dev
-- `shared/references/affiliate-glossary.md` — reward_type definitions
-- `shared/references/flywheel-connections.md` — master flywheel connection map
+- `shared/references/operacao/glossario-afiliados-br.md` — reward_type definitions
 
 ## Flywheel Connections
 
 ### Feeds Into
 - `funnel-planner` (S8) — commission projections inform funnel ROI estimates
-- `value-ladder-architect` (S4) — commission structure shapes ladder design
 - `multi-program-manager` (S7) — calculated commissions for portfolio management
 
 ### Fed By
@@ -328,6 +324,4 @@ chain_metadata:
   timestamp: string
   suggested_next:
     - "funnel-planner"
-    - "value-ladder-architect"
-    - "landing-page-creator"
 ```

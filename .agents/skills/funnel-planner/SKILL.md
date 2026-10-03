@@ -11,14 +11,13 @@ version: "1.0.0"
 tags: ["affiliate-marketing", "meta", "planning", "compliance", "funnel", "strategy"]
 compatibility: "Claude Code, ChatGPT, Gemini CLI, Cursor, Windsurf, OpenClaw, any AI agent"
 metadata:
-  author: affitor
   version: "1.0"
   stage: S8-Meta
 ---
 
 # Funnel Planner
 
-Plan a complete affiliate funnel from research to revenue by chaining Affitor skills into a week-by-week execution roadmap. Output is a Markdown plan with skill sequence, time estimates, and exact invocation prompts for each step.
+Plan a complete affiliate funnel from research to revenue by chaining skills into a week-by-week execution roadmap. Output is a Markdown plan with skill sequence, time estimates, and exact invocation prompts for each step.
 
 ## Stage
 
@@ -74,8 +73,8 @@ Ask clarifying questions only if truly ambiguous. Default to the most common cas
 ### Step 2: Select Relevant Skills
 
 Based on channels, experience, and goal, select 5-8 skills from S1-S7:
-- **Beginner + blog + twitter**: S1 → S2 (viral-post-writer) → S3 (affiliate-blog-builder) → S5 (bio-link-deployer) → S6 (seo-audit)
-- **Intermediate + email + blog**: S1 → S3 → S4 (landing-page-creator) → S5 (email-drip-sequence) → S6 (performance-report) → S7 (content-repurposer)
+- **Beginner + blog + twitter**: S1 → S2 (viral-post-writer) → S5 (bio-link-deployer) → S6 (seo-audit)
+- **Intermediate + email + blog**: S1 → S5 (email-drip-sequence) → S6 (performance-report) → S7 (content-repurposer)
 - **Advanced + all channels**: Full S1-S7 pipeline with S8 (compliance-checker) at each content step
 
 ### Step 3: Estimate Effort
@@ -176,9 +175,7 @@ milestones:
 
 ## References
 
-- `registry.json` — Skill catalog for selecting the right skills. Read in Step 2.
-- `docs/affiliate-funnel-overview.md` — Funnel stage descriptions. Read in Step 2.
-- `shared/references/flywheel-connections.md` — master flywheel connection map
+- `.agents/skills/` — Skill catalog (each skill's `SKILL.md`) for selecting the right skills. Read in Step 2.
 
 ## Flywheel Connections
 
@@ -187,7 +184,6 @@ milestones:
 
 ### Fed By
 - `commission-calculator` (S1) — commission projections inform funnel ROI estimates
-- `value-ladder-architect` (S4) — value ladder informs the funnel structure
 - `multi-program-manager` (S7) — portfolio data for planning
 - `performance-report` (S6) — performance baselines for goal-setting
 - `category-designer` (S8) — category framing shapes the funnel narrative
@@ -203,6 +199,4 @@ chain_metadata:
   suggested_next:
     - "affiliate-program-search"
     - "viral-post-writer"
-    - "affiliate-blog-builder"
-    - "landing-page-creator"
 ```

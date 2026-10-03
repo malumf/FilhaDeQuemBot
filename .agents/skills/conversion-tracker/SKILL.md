@@ -11,7 +11,6 @@ version: "1.0.0"
 tags: ["affiliate-marketing", "analytics", "optimization", "tracking", "conversion"]
 compatibility: "Claude Code, ChatGPT, Gemini CLI, Cursor, Windsurf, OpenClaw, any AI agent"
 metadata:
-  author: affitor
   version: "1.0"
   stage: S6-Analytics
 ---
@@ -170,8 +169,7 @@ setup_guide:
 ## References
 
 - `references/tracking-templates.md` — Google Sheets template, UTM parameter reference, platform-specific tracking notes, S6 feedback loop
-- `shared/references/affiliate-glossary.md` — Definitions for tracking terms (EPC, CTR, conversion). Referenced in setup guide.
-- `shared/references/flywheel-connections.md` — master flywheel connection map
+- `shared/references/operacao/glossario-afiliados-br.md` — Definitions for tracking terms (EPC, CTR, conversion). Referenced in setup guide.
 
 ## Flywheel Connections
 
@@ -183,7 +181,6 @@ setup_guide:
 ### Fed By
 - `bio-link-deployer` (S5) — deployed link URLs to track
 - `email-drip-sequence` (S5) — email links to track
-- `landing-page-creator` (S4) — landing page conversions to track
 - `github-pages-deployer` (S5) — deployed site to track
 
 ### Feedback Loop

@@ -15,7 +15,6 @@ version: "1.0.0"
 tags: ["affiliate-marketing", "content-creation", "infographic", "visual", "design", "branded"]
 compatibility: "Claude Code, ChatGPT, Gemini CLI, Cursor, Windsurf, OpenClaw, any AI agent"
 metadata:
-  author: affitor
   version: "1.0"
   stage: S2-Content
 ---
@@ -27,11 +26,9 @@ Outputs structured layout + all copy + data points + color scheme — ready to r
 as HTML/CSS, with [Satori](https://github.com/vercel/satori) (server-side), in Canva,
 Figma, or any design tool.
 
-**LinkedIn posts with images get 2-3x more engagement.** This skill turns your content
-into visual assets without design skills.
-
-Inspired by [content-pipeline](https://github.com/Affitor/content-pipeline)'s Satori
-rendering: AI writes the content → structured spec → rendered as a branded image.
+**Social posts with images get significantly more engagement.** This skill turns your
+content into visual assets without design skills. Pipeline: AI writes the content →
+structured spec → rendered as a branded image.
 
 ## Stage
 
@@ -71,7 +68,7 @@ brand: object                  # (optional) Brand customization
   secondary_color: string      # Hex — "#1A1A2E"
   accent_color: string         # Hex — "#FF6B35"
   font_style: string           # "modern" | "classic" | "bold" | "minimal"
-  logo_text: string            # Text-based logo — "Affitor" | "@yourhandle"
+  logo_text: string            # Text-based logo — "@yourhandle" | brand name
 output_format: string          # (optional, default: "spec")
                                # "spec" — structured JSON spec (for any renderer)
                                # "html" — renderable HTML/CSS (self-contained)
@@ -238,7 +235,7 @@ copy:
   body_items: string[]      # Data labels, descriptions, etc.
   cta: string               # Call-to-action text — "Link in bio" | "See comments for link"
   footer: string            # Brand name or @handle
-  source: string            # "Data: openaffiliate.dev" or source attribution
+    source: string            # Source attribution, e.g., "Data: [source name]"
 ```
 
 **Copy rules:**
@@ -337,7 +334,7 @@ If any check fails, fix before delivering.
 │     🏆 Winner: HeyGen           │
 │                                 │
 │  ───────────────────────────    │
-│  @yourhandle · openaffiliate.dev │
+│  @yourhandle                    │
 └─────────────────────────────────┘
 
 ### Data
@@ -382,45 +379,17 @@ User: "Visualize the affiliate funnel steps as an infographic"
 → Steps: Research → Content → Landing → Deploy → Track → Optimize
 → Output: horizontal flow with icons and brief descriptions
 
-## Feedback & Issue Reporting
-
-When this skill produces unexpected, incomplete, or incorrect output, generate a
-`skill_feedback` block (see `shared/references/feedback-protocol.md` for full schema).
-
-**Skill-specific failure modes:**
-- **No extractable data from content:** Content is purely narrative, no stats/numbers. Report as `data_quality`.
-- **HTML output doesn't render correctly:** CSS issues, wrong dimensions, text overflow. Report as `wrong_output` with the HTML.
-- **Too many words on infographic:** >50 words makes it unreadable. Report as `wrong_output`.
-
-**Auto-detect triggers:**
-- `infographic_spec.data` has <2 data points
-- Total word count in all copy fields > 60
-- Dimensions don't match declared platform
-
-Report issues: [GitHub Issues](https://github.com/Affitor/affiliate-skills/issues/new?labels=skill-feedback&title=infographic-generator) | [Discussions](https://github.com/Affitor/affiliate-skills/discussions/categories/ideas)
-
-## References
-
-- `shared/references/social-data-providers.md` — data sources for infographic content
-- `shared/references/platform-rules.md` — platform-specific image requirements
-- `shared/references/flywheel-connections.md` — master flywheel connection map
-- `shared/references/feedback-protocol.md` — issue detection and reporting standard
-
 ## Flywheel Connections
 
 ### Feeds Into
 - `social-media-scheduler` (S5) — infographic ready to schedule with post
-- `landing-page-creator` (S4) — infographic as hero image or section visual
 - `email-drip-sequence` (S5) — infographic as email visual content
 - `bio-link-deployer` (S5) — infographic in link hub
 
 ### Fed By
 - `content-research-brief` (S2) — key stats and data for visualization
 - `viral-post-writer` (S2) — post content to create accompanying visual
-- `affiliate-blog-builder` (S3) — blog data for featured image infographic
 - `trending-content-scout` (S1) — engagement data for benchmark visuals
-- `traffic-analyzer` (S1) — traffic data for comparison infographics
-- `comparison-post-writer` (S3) — comparison data for visual format
 - `commission-calculator` (S1) — commission data for stat highlights
 
 ### Feedback Loop
@@ -446,5 +415,4 @@ chain_metadata:
   suggested_next:
     - "social-media-scheduler"
     - "viral-post-writer"
-    - "landing-page-creator"
 ```

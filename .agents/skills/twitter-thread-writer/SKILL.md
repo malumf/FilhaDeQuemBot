@@ -13,7 +13,6 @@ version: "1.0.0"
 tags: ["affiliate-marketing", "content-creation", "social-media", "copywriting", "twitter", "threads"]
 compatibility: "Claude Code, ChatGPT, Gemini CLI, Cursor, Windsurf, OpenClaw, any AI agent"
 metadata:
-  author: affitor
   version: "1.0"
   stage: S2-Content
 ---
@@ -124,10 +123,10 @@ The CTA tweet should:
 1. Summarize what the thread delivered
 2. Recommend action (try the product, sign up, or check it out)
 3. Include the affiliate link OR direct to bio for the link
-4. Include FTC disclosure "#ad" per `shared/references/ftc-compliance.md`
+4. Include the affiliate disclosure per `shared/references/brasil/compliance-br.md`
 
-Soft CTA example: "If you want to try [product], there's a free trial at [link]. I use it daily. #ad"
-Direct CTA: "[Product] is how I [result]. Link to try it free: [link] #ad"
+Soft CTA example: "If you want to try [product], there's a free trial at [link]. I use it daily. Contém link de afiliado: se você comprar, eu ganho comissão (sem custo a mais pra você)."
+Direct CTA: "[Product] is how I [result]. Link to try it free: [link] Contém link de afiliado: se você comprar, eu ganho comissão (sem custo a mais pra você)."
 
 ### Step 6: Add Engagement Mechanics
 
@@ -149,7 +148,7 @@ Before presenting output, verify:
 
 - [ ] Every tweet is under 280 characters
 - [ ] Product mention appears at 60-70% through the thread
-- [ ] FTC "#ad" is in the CTA tweet containing the link
+- [ ] Affiliate disclosure is in the CTA tweet containing the link
 - [ ] Hook tweet promises specific outcome or states bold claim
 - [ ] No banned hook starts: "In this thread...", "I want to share..."
 
@@ -170,7 +169,7 @@ If any check fails, fix the output before delivering. Do not flag the checklist 
   ]
   framework: string             # Which framework was used
   product_mention_tweet: number # Which tweet number introduces the product
-  disclosure_tweet: number      # Which tweet has #ad
+  disclosure_tweet: number      # Which tweet has the disclosure
   suggested_hashtags: string[]  # 2-3 hashtags for the thread
   best_time_to_post: string     # Optimal posting time for X
   product_name: string
@@ -204,7 +203,7 @@ If any check fails, fix the output before delivering. Do not flag the checklist 
 ---
 
 **Tweet [N] (CTA)** — [X chars]
-[Tweet content including #ad disclosure]
+[Tweet content including affiliate disclosure]
 
 ---
 
@@ -248,7 +247,7 @@ If any check fails, fix the output before delivering. Do not flag the checklist 
 User: "Write a Twitter thread promoting ConvertKit to freelancers"
 → Angle: "How I built a 3,000-subscriber email list as a freelancer — what worked"
 → Framework: Numbers Story
-→ 9 tweets: Hook (metrics) → 6 lessons → ConvertKit mention at tweet 6 → CTA + #ad
+→ 9 tweets: Hook (metrics) → 6 lessons → ConvertKit mention at tweet 6 → CTA + disclosure
 → Emphasis: free plan, creator-friendly, no bloat
 
 **Example 2:**
@@ -263,14 +262,12 @@ User: "8-tweet thread about HeyGen for video creators"
 → Framework: How-to Tutorial — "How to create a talking-head video without a camera"
 → Step-by-step: sign up → upload script → pick avatar → generate → edit → export
 → Product mention woven in at step 1 (that's HeyGen)
-→ CTA: "HeyGen has a free plan — I made my first 3 videos for free: [link] #ad"
+→ CTA: "HeyGen has a free plan — I made my first 3 videos for free: [link] Contém link de afiliado: se você comprar, eu ganho comissão (sem custo a mais pra você)."
 
 ## References
 
-- `shared/references/ftc-compliance.md` — #ad placement rules for Twitter/X
-- `shared/references/platform-rules.md` — X character limits, link handling, thread best practices
-- `shared/references/affiliate-glossary.md` — terminology
-- `shared/references/flywheel-connections.md` — master flywheel connection map
+- `shared/references/brasil/compliance-br.md` — regras de divulgação comercial (Brasil)
+- `shared/references/operacao/glossario-afiliados-br.md` — terminology
 
 ## Revenue & Action Plan
 
@@ -288,20 +285,15 @@ User: "8-tweet thread about HeyGen for video creators"
 ### Track Your Results
 After 48 hours: how many clicks on the affiliate link? How many bookmarks? Bookmarks predict long-term traffic — bookmarked threads get resurfaced by the algorithm for weeks.
 
-> **Next step — copy-paste this prompt:**
-> "Expand my Twitter thread about [product] into a full blog review" → runs `affiliate-blog-builder`
-
 ## Flywheel Connections
 
 ### Feeds Into
-- `affiliate-blog-builder` (S3) — thread content expanded into blog posts
 - `content-pillar-atomizer` (S2) — successful threads become content to atomize
 - `social-media-scheduler` (S5) — threads ready to schedule
 - `ab-test-generator` (S6) — hook variants for testing
 
 ### Fed By
 - `affiliate-program-search` (S1) — `recommended_program` product data
-- `purple-cow-audit` (S1) — remarkable angles for thread hooks
 - `content-pillar-atomizer` (S2) — atomized Twitter pieces from pillar content
 
 ### Feedback Loop

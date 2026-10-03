@@ -15,7 +15,6 @@ version: "1.0.0"
 tags: ["affiliate-marketing", "content-creation", "social-media", "copywriting", "reddit"]
 compatibility: "Claude Code, ChatGPT, Gemini CLI, Cursor, Windsurf, OpenClaw, any AI agent"
 metadata:
-  author: affitor
   version: "1.0"
   stage: S2-Content
 ---
@@ -138,11 +137,11 @@ Also use `web_search "reddit [problem space] best tools"` to understand:
    - ONE honest con: "It's not perfect — the mobile app is weak — but for desktop work
      it's exactly what I needed." Cons dramatically increase trust.
 
-5. **FTC disclosure** (at the bottom):
+5. **Affiliate disclosure** (at the bottom):
    - "Full disclosure: the link in my profile leads to an affiliate link. No extra cost
      to you, and I would recommend this tool regardless."
    - Or if not posting a link: "Not affiliated, just a genuine fan."
-   - Per `shared/references/ftc-compliance.md` — disclosure is required for Reddit too.
+   - Per `shared/references/brasil/compliance-br.md` — disclosure applies to Reddit too.
 
 6. **Closing**: invite discussion, not clicks.
    - "Happy to answer questions about my workflow in the comments."
@@ -156,7 +155,7 @@ Before finalizing, run through this checklist:
 - [ ] No exclamation marks in praise ("This tool is AMAZING!!")
 - [ ] No superlatives without evidence ("best tool I've ever used" → needs qualifier)
 - [ ] Affiliate link goes in comments or profile bio, NOT the main post body (most subreddits)
-- [ ] FTC disclosure is present and clear
+- [ ] Affiliate disclosure is present and clear
 - [ ] Post doesn't read like a press release
 - [ ] Includes at least one real limitation or caveat about the product
 - [ ] Tone matches the subreddit (match voice to community)
@@ -177,7 +176,7 @@ Before presenting output, verify:
 - [ ] Post adds value even if product mention is removed
 - [ ] No exclamation marks in product praise
 - [ ] Affiliate link in comments or bio, NOT in post body
-- [ ] FTC "Full disclosure: affiliate link" present at bottom
+- [ ] Affiliate disclosure present at bottom
 - [ ] At least one real product limitation or caveat mentioned
 - [ ] Tone matches target subreddit style
 
@@ -315,10 +314,8 @@ User: "Write a Reddit post about HeyGen for r/videography"
 
 ## References
 
-- `shared/references/ftc-compliance.md` — FTC disclosure requirements for Reddit
-- `shared/references/platform-rules.md` — Reddit-specific format and link rules
-- `shared/references/affiliate-glossary.md` — terminology
-- `shared/references/flywheel-connections.md` — master flywheel connection map
+- `shared/references/brasil/compliance-br.md` — regras de divulgação comercial (Brasil)
+- `shared/references/operacao/glossario-afiliados-br.md` — terminology
 
 ## Revenue & Action Plan
 
@@ -336,18 +333,13 @@ User: "Write a Reddit post about HeyGen for r/videography"
 ### Track Your Results
 After 30 days, check: how many clicks did the post drive? What's the upvote ratio? Posts with 80%+ upvote ratio = the angle resonated. Repeat that angle for the next product.
 
-> **Next step — copy-paste this prompt:**
-> "Write a full blog review expanding on my Reddit post about [product]" → runs `affiliate-blog-builder`
-
 ## Flywheel Connections
 
 ### Feeds Into
-- `affiliate-blog-builder` (S3) — Reddit insights expanded into long-form content
 - `social-media-scheduler` (S5) — posts ready to schedule
 
 ### Fed By
 - `affiliate-program-search` (S1) — `recommended_program` product data
-- `purple-cow-audit` (S1) — honest product evaluation for Reddit authenticity
 - `content-pillar-atomizer` (S2) — atomized Reddit pieces from pillar content
 
 ### Feedback Loop
@@ -388,5 +380,4 @@ chain_metadata:
   timestamp: string
   suggested_next:
     - "social-media-scheduler"
-    - "affiliate-blog-builder"
 ```

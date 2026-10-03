@@ -88,18 +88,18 @@ Factors:
 - Product reviews and reputation (G2, Capterra, Trustpilot)
 - Company track record and funding
 - User retention (do people actually keep using it?)
-- Stars on openaffiliate.dev (`stars_count` — community signal)
+- General community sentiment (forums, social proof, word of mouth)
 - Red flags? (layoffs, pivot, quality decline, data breaches)
 
 Scoring guide (use G2/Capterra rating as primary signal when available):
-- 9-10: G2/Capterra ≥4.5/5, `stars_count` ≥20, funded company, no red flags
-- 7-8: G2/Capterra 4.0-4.4/5, `stars_count` ≥10, generally positive sentiment
-- 5-6: G2/Capterra 3.5-3.9/5, `stars_count` ≥5, some known limitations
-- 3-4: G2/Capterra 3.0-3.4/5, `stars_count` <5, mixed reviews or concerning signals
+- 9-10: G2/Capterra ≥4.5/5, strong community sentiment, funded company, no red flags
+- 7-8: G2/Capterra 4.0-4.4/5, generally positive sentiment
+- 5-6: G2/Capterra 3.5-3.9/5, some known limitations
+- 3-4: G2/Capterra 3.0-3.4/5, mixed reviews or concerning signals
 - 1-2: G2/Capterra <3.0/5 or no reviews, red flags (data breach, mass layoffs, pivot)
 
-**Evidence format**: Always show: `"Trust X/10 — G2: [rating]/5 ([N] reviews), stars_count: [N], [any flags]"`
-**Confidence**: 🟢 HIGH (G2/Capterra data found) | 🟡 MEDIUM (only stars_count or Trustpilot) | 🔴 LOW (no review data)
+**Evidence format**: Always show: `"Trust X/10 — G2: [rating]/5 ([N] reviews), [any flags]"`
+**Confidence**: 🟢 HIGH (G2/Capterra data found) | 🟡 MEDIUM (only Trustpilot or community sentiment) | 🔴 LOW (no review data)
 
 ## Overall Score Calculation
 

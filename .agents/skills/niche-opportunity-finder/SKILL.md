@@ -13,7 +13,6 @@ version: "1.0.0"
 tags: ["affiliate-marketing", "research", "niche-analysis", "program-discovery", "niche", "opportunity"]
 compatibility: "Claude Code, ChatGPT, Gemini CLI, Cursor, Windsurf, OpenClaw, any AI agent"
 metadata:
-  author: affitor
   version: "1.0"
   stage: S1-Research
 ---
@@ -86,7 +85,7 @@ Score each candidate on 4 dimensions (1-10 scale each):
 | Dimension | Weight | How to Assess |
 |-----------|--------|---------------|
 | Search Demand | 30% | `web_search "[niche] how to" — look at result count and autosuggest depth |
-| Program Availability | 30% | Search openaffiliate.dev (`GET /api/programs?q=[niche]`) or `web_search "[niche] affiliate programs"` — count quality programs |
+| Program Availability | 30% | `web_search "[niche] affiliate programs"` — count quality programs |
 | Competition Level | 25% | Search "[niche] best tools" — how saturated is the top 10? Fewer exact-match affiliate sites = less competition. Score 10 = very low competition |
 | Content Potential | 15% | Can tutorials, comparisons, listicles, and reviews be made for this niche easily? |
 
@@ -94,16 +93,15 @@ Score each candidate on 4 dimensions (1-10 scale each):
 
 Verdict: 7.5+ = "High Opportunity" / 5.5-7.4 = "Worth Testing" / <5.5 = "Saturated/Skip"
 
-### Step 4: Validate Top 3 Niches on openaffiliate.dev
+### Step 4: Validate Top 3 Niches
 
-For the top 3 niches, query `GET https://openaffiliate.dev/api/programs?q=[niche]&utm_source=affiliate-skills`
-(see `affiliate-program-search/references/openaffiliate-api.md`)
-to verify real programs exist with good commission structures:
-- At least 3 programs with `reward_value` 20%+ OR `reward_type` cps_recurring
-- At least one program with `cookie_days` >= 30
-- Programs with `stars_count` > 5 (community-validated quality)
+For the top 3 niches, use `web_search "[niche] affiliate program"` and `web_fetch`
+on official program pages to verify real programs exist with good commission structures:
+- At least 3 programs with commission 20%+ OR recurring commissions
+- At least one program with a cookie window >= 30 days
+- Programs with positive public reviews (community-validated quality)
 
-If a niche scores well on demand but has no programs on openaffiliate.dev, use
+If a niche scores well on demand but few programs are found, use
 `web_search "[niche] affiliate program signup"` to verify alternatives exist.
 
 ### Step 5: Build the Opportunity Brief
@@ -123,7 +121,7 @@ Map user's chosen niche to the affiliate funnel:
 Before presenting output, verify:
 
 - [ ] Search demand backed by data (autosuggest depth, result count)
-- [ ] Top niche has ≥3 programs with 20%+ commission on openaffiliate.dev
+- [ ] Top niche has ≥3 programs with 20%+ commission (verified via search)
 - [ ] Competition score reflects actual top-10 SERP analysis
 - [ ] Content angles are specific and actionable, not generic
 
@@ -194,7 +192,7 @@ If any check fails, fix the output before delivering. Do not flag the checklist 
 
 ## Next Steps
 
-1. Run `affiliate-program-search` to find the best [Niche] program on openaffiliate.dev
+1. Run `affiliate-program-search` to find the best [Niche] program
 2. Run `commission-calculator` to project 90-day earnings
 3. Run `tiktok-script-writer` or `twitter-thread-writer` to create your first piece of content
 ```
@@ -232,18 +230,13 @@ User: "I know a lot about Notion and productivity tools"
 
 ## References
 
-- `affiliate-program-search/references/openaffiliate-api.md` — how to fetch programs from openaffiliate.dev
-- `shared/references/affiliate-glossary.md` — affiliate marketing terminology
-- `shared/references/ftc-compliance.md` — disclosure requirements
-- `shared/references/flywheel-connections.md` — master flywheel connection map
+- `shared/references/operacao/glossario-afiliados-br.md` — affiliate marketing terminology
+- `shared/references/brasil/compliance-br.md` — disclosure requirements
 
 ## Flywheel Connections
 
 ### Feeds Into
 - `affiliate-program-search` (S1) — validated niches to search programs in
-- `monopoly-niche-finder` (S1) — niche data for intersection analysis
-- `keyword-cluster-architect` (S3) — niche defines keyword universe
-- `content-moat-calculator` (S3) — niche for feasibility analysis
 
 ### Fed By
 - `performance-report` (S6) — performance data identifies best-performing niches
@@ -259,6 +252,4 @@ chain_metadata:
   timestamp: string
   suggested_next:
     - "affiliate-program-search"
-    - "monopoly-niche-finder"
-    - "keyword-cluster-architect"
 ```

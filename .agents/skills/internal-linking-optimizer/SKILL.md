@@ -12,7 +12,6 @@ version: "1.0.0"
 tags: ["affiliate-marketing", "analytics", "optimization", "tracking", "internal-links", "site-structure"]
 compatibility: "Claude Code, ChatGPT, Gemini CLI, Cursor, Windsurf, OpenClaw, any AI agent"
 metadata:
-  author: affitor
   version: "1.0"
   stage: S6-Analytics
 ---
@@ -31,8 +30,6 @@ S6: Analytics & Optimization — This is analytics/audit work on existing conten
 - User asks about "orphan pages", "link structure", "hub and spoke"
 - User says "internal linking", "link audit", "link equity"
 - After publishing new content — new pages need internal links within 48 hours
-- After `keyword-cluster-architect` — cluster structure defines the ideal link architecture
-- Monthly maintenance task alongside `content-decay-detector`
 
 ## Input Schema
 
@@ -53,8 +50,6 @@ new_pages: string[]           # OPTIONAL — recently published pages needing li
                               # Default: none
 ```
 
-**Chaining from S3 keyword-cluster-architect**: Use `keyword_clusters.hub` and `keyword_clusters.clusters` to define ideal link architecture.
-
 ## Workflow
 
 ### Step 1: Discover Site Structure
@@ -65,8 +60,6 @@ new_pages: string[]           # OPTIONAL — recently published pages needing li
 4. Note orphan pages (pages with few/no internal links pointing to them)
 
 ### Step 2: Analyze Current Link Structure
-
-Read `shared/references/seo-strategy.md` for internal linking rules.
 
 For each page group:
 - Count internal links TO this page (inlinks)
@@ -138,8 +131,6 @@ chain_metadata:
   timestamp: string
   suggested_next:
     - "seo-audit"
-    - "content-decay-detector"
-    - "affiliate-blog-builder"
 ```
 
 ## Output Format
@@ -188,7 +179,7 @@ These pages have no/few internal links and are invisible to Google:
 - **No site URL**: "I need your site URL to analyze internal links."
 - **Site not indexed**: "This site doesn't appear to be indexed. Check robots.txt and sitemap."
 - **Too few pages**: "With only [X] pages, focus on creating more content first. Internal linking becomes powerful at 10+ pages."
-- **No hub pages identifiable**: "I can't identify clear hub pages. Run `keyword-cluster-architect` first to define your topic structure."
+- **No hub pages identifiable**: "I can't identify clear hub pages. Define your topic clusters first, then re-run the audit."
 
 ## Examples
 
@@ -198,7 +189,7 @@ These pages have no/few internal links and are invisible to Google:
 **Example 2:** "I just published a new article, what should I link to it?"
 → Identify 3-5 existing pages that should link to the new article, with specific anchor text and paragraph locations.
 
-**Example 3:** "Optimize internal links based on my keyword clusters" (after keyword-cluster-architect)
+**Example 3:** "Optimize internal links based on my keyword clusters"
 → Use cluster structure to define ideal hub-spoke links. Compare current vs ideal. Generate gap-filling instructions.
 
 ## Revenue & Action Plan
@@ -223,19 +214,10 @@ After 4 weeks: check Google Search Console for the orphan pages. Did impressions
 ## Flywheel Connections
 
 ### Feeds Into
-- `content-decay-detector` (S3) — pages with weak link structure may be decaying
 - `seo-audit` (S6) — link structure is a key SEO factor
-- `affiliate-blog-builder` (S3) — new articles need immediate internal links
 
 ### Fed By
-- `keyword-cluster-architect` (S3) — cluster structure defines ideal link architecture
-- `affiliate-blog-builder` (S3) — new content that needs linking
 - `seo-audit` (S6) — identifies pages with link structure issues
 
 ### Feedback Loop
 - `seo-audit` (S6) tracks ranking changes after link optimization → measure impact of internal linking changes
-
-## References
-
-- `shared/references/seo-strategy.md` — Hub-and-spoke linking rules, anchor text rules, link equity flow
-- `shared/references/flywheel-connections.md` — Master connection map

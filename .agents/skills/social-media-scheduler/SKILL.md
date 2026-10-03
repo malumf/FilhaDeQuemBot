@@ -13,7 +13,6 @@ version: "1.0.0"
 tags: ["affiliate-marketing", "distribution", "deployment", "email-marketing", "scheduling", "content-calendar"]
 compatibility: "Claude Code, ChatGPT, Gemini CLI, Cursor, Windsurf, OpenClaw, any AI agent"
 metadata:
-  author: affitor
   version: "1.0"
   stage: S5-Distribution
 ---
@@ -91,7 +90,7 @@ Overall month target: 20% promotional, 80% value/engagement.
 - 20% Engagement (questions, polls, hot takes, controversial opinions)
 - 20% Personal / storytelling (lessons learned, behind the scenes, wins)
 - 15% Curated (share tools, articles, resources — without affiliate link)
-- 15% Promotional (affiliate link posts — FTC disclosed)
+- 15% Promotional (affiliate link posts — with disclosure)
 
 ### Step 3: Write Posts Per Platform
 
@@ -168,7 +167,7 @@ Before presenting output, verify:
 - [ ] 30 posts generated across 4 weeks
 - [ ] 80/20 value-to-promo ratio maintained (24 value, 6 promo)
 - [ ] Platform-specific formatting applied (character limits, hashtag counts)
-- [ ] FTC disclosure (#ad or affiliate marker) on all promo posts
+- [ ] Affiliate disclosure on all promo posts (per `shared/references/brasil/compliance-br.md`)
 - [ ] Posting times are realistic per platform and timezone
 
 If any check fails, fix the output before delivering. Do not flag the checklist to the user — just ensure the output passes.
@@ -243,9 +242,7 @@ Action: 4 Reddit posts targeting r/Notion, r/productivity, r/getdisciplined. Ful
 
 ## References
 
-- `shared/references/ftc-compliance.md` — FTC disclosure for social posts. Every affiliate link post needs "(Affiliate link)" or "#ad" per FTC rules.
-- `shared/references/affitor-branding.md` — Optional Affitor mention in post footer.
-- `shared/references/flywheel-connections.md` — master flywheel connection map
+- `shared/references/brasil/compliance-br.md` — Disclosure rules for social posts (Brasil). Every affiliate link post carries the disclosure per that reference.
 
 ## Revenue & Action Plan
 

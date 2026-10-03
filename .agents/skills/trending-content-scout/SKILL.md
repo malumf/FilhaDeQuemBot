@@ -15,7 +15,6 @@ version: "1.0.0"
 tags: ["affiliate-marketing", "research", "social-data", "engagement", "trending", "content-intelligence"]
 compatibility: "Claude Code, ChatGPT, Gemini CLI, Cursor, Windsurf, OpenClaw, any AI agent"
 metadata:
-  author: affitor
   version: "1.0"
   stage: S1-Research
 ---
@@ -58,37 +57,11 @@ product: object                # (optional) Specific product to focus on
   url: string                  # "https://heygen.com"
 ```
 
-No `api_config` needed in input — skills auto-detect configuration from conversation
-context, project settings, or CLAUDE.md. See `shared/references/social-data-providers.md`
-for setup instructions.
-
 ## Workflow
 
-### Step 1: Determine Data Source
+### Step 1: Collect Data via web_search
 
-Check if the user has API configuration available:
-
-```
-IF social_data_config exists in context/settings for a platform:
-  → Use configured API for that platform
-  → Structured data: exact views, likes, comments, shares
-  
-ELSE (default — no API):
-  → Use web_search + web_fetch
-  → Still effective — see fallback methods below
-```
-
-**API mode** (when configured):
-
-For each platform in `platforms`:
-- YouTube: Search API → get video list → Details API → get statistics (views, likes, comments)
-- TikTok: Search API → get video list with stats (playCount, diggCount, commentCount, shareCount)
-- X: Search API → get tweets with public_metrics (impressions, likes, retweets, replies)
-- Reddit: Search API → get posts with score and comment count
-
-See `shared/references/social-data-providers.md` for specific API endpoints and config.
-
-**web_search fallback** (no API — default):
+This skill works with `web_search` + `web_fetch` — no API keys or external providers required.
 
 ```
 For YouTube:
@@ -134,7 +107,7 @@ ContentItem:
   hook_type: string            # Detected hook style (see classification below)
 ```
 
-**Engagement Score Formula** (consistent across all Affitor skills):
+**Engagement Score Formula** (consistent across all skills):
 
 ```
 engagement_score = (likes × 2 + comments × 3 + shares × 5) / max(views, 1) × 1000
@@ -143,10 +116,10 @@ engagement_score = (likes × 2 + comments × 3 + shares × 5) / max(views, 1) ×
 Platform-specific adjustments:
 - **Reddit:** `(score × 2 + num_comments × 3) / max(score, 1) × 1000` (no share count)
 - **X:** Use retweets as shares, replies as comments
-- **YouTube:** Estimate shares as `comments × 0.5` (not available via most APIs)
+- **YouTube:** Estimate shares as `comments × 0.5` (share counts rarely available)
 - **web_search fallback:** If only views are available, use `views` as the ranking signal and note that engagement_score is estimated
 
-See `shared/references/social-data-providers.md` for full formula documentation.
+See `shared/references/nucleo/experimentacao-metricas.md` for full formula documentation.
 
 **Content Format Classification:**
 
@@ -258,7 +231,7 @@ engagement_benchmark:
 
 Before presenting output, verify:
 
-- [ ] Data source is clearly stated (API vs web_search)
+- [ ] Data source is clearly stated
 - [ ] Engagement scores are calculated consistently using the standard formula
 - [ ] Content format and hook classifications are based on actual title/description analysis, not guesses
 - [ ] Gap analysis includes at least 3 specific, actionable gaps
@@ -275,7 +248,7 @@ Other skills can consume these fields from conversation context:
 output_schema_version: "1.0.0"
 keyword: string
 platforms_scanned: string[]
-data_source: "api" | "web_search" | "mixed"   # transparency
+  data_source: string                            # transparency — how data was collected
 total_content_analyzed: number
 top_content: ContentItem[]                     # top results sorted by sort_by
 pattern_analysis:
@@ -324,7 +297,7 @@ recommended_next_skill: string # "content-angle-ranker"
 ## Trending Content Scout: [Keyword]
 
 ### Data Source
-📊 **[API: YouTube Data API + RapidAPI TikTok | web_search (no API configured)]**
+📊 **[web_search]**
 Scanned: [X] content pieces across [Y] platforms
 Time range: [30 days]
 
@@ -401,19 +374,17 @@ Based on this data, the highest-opportunity path is:
 2. **Create a [winning format]** using a [best hook] hook
    → Skill: `viral-post-writer` (format: [format], hook: [hook])
 3. **Fill [Gap 1]** — this is the lowest-competition, highest-potential opportunity
-   → Skill: `tiktok-script-writer` (if TikTok) or `comparison-post-writer` (if blog)
+   → Skill: `tiktok-script-writer` (if TikTok)
 ```
 
 ## Error Handling
 
-- **No API configured:** Fall back to web_search. Include note: *"Data from web_search is approximate. For exact engagement metrics, configure an API provider — see `shared/references/social-data-providers.md`"*
-- **API rate limited:** Fall back to web_search for remaining platforms. Note which platforms used API vs web_search in output.
 - **No content found for keyword:** The keyword may be too niche or too new.
   1. Try broadening: "[keyword]" → "[parent category]"
   2. Try removing platform filter: search across all platforms
   3. If still empty, this is itself a signal — could be a gap opportunity. Report: "No existing content found — this keyword is either too new or too niche. This could be a first-mover opportunity."
 - **Platform blocked/unavailable:** Skip that platform, continue with others. Note: *"[Platform] was unavailable. Results are from [remaining platforms] only."*
-- **web_search returns only a few results:** Present what's available. Note: *"Limited data available ([X] results). Patterns may not be representative. Consider configuring an API for better coverage."*
+- **web_search returns only a few results:** Present what's available. Note: *"Limited data available ([X] results). Patterns may not be representative."*
 - **Engagement data partially available:** If only views are available (no likes/comments), sort by views and estimate engagement. Note: *"Engagement scores are estimated — only view counts were available."*
 
 ## Examples
@@ -437,37 +408,16 @@ User: "I want to create content about email marketing tools. What's performing w
 → Recommend: Fill TikTok gap with comparison format, or target Reddit with authentic discussion
 
 **Example 3:**
-User: "Scout trending content about AI writing tools, I have RapidAPI configured"
-→ Use configured APIs for YouTube + TikTok
-→ Get exact engagement data: views, likes, comments, shares
-→ Engagement scores calculated precisely
-→ Pattern: "I replaced my copywriter with AI" hook has 3x average engagement
-→ Output includes exact benchmark: median 18K views, top 10% needs 120K+
+User: "Scout trending content about AI writing tools"
+→ web_search across YouTube + TikTok for AI writing tool content
+→ Extract available engagement signals from search snippets
+→ Pattern: "I replaced my copywriter with AI" hook appears in most top results
+→ Output includes benchmark from collected data: median views, top 10% threshold
 → Recommend: `content-angle-ranker` to pick best angle, then `viral-post-writer`
-
-## Feedback & Issue Reporting
-
-When this skill produces unexpected, incomplete, or incorrect output, generate a
-`skill_feedback` block (see `shared/references/feedback-protocol.md` for full schema).
-
-**Skill-specific failure modes:**
-- **Empty results on all platforms:** Keyword too niche or all APIs/web_search returned nothing. Report as `data_quality` with the keyword used.
-- **Engagement scores all zero:** Metrics unavailable — only titles retrieved. Report as `data_quality`, note which platforms had no metrics.
-- **Format/hook classification wrong:** Agent classified a tutorial as a review. Report as `wrong_output` with the misclassified content.
-
-**Auto-detect triggers:**
-- `top_content` array has <5 items after scanning all platforms
-- `engagement_benchmark.sample_size` < 10
-- >50% of `content_gaps` are generic rather than specific
-
-Report issues: [GitHub Issues](https://github.com/Affitor/affiliate-skills/issues/new?labels=skill-feedback&title=trending-content-scout) | [Discussions](https://github.com/Affitor/affiliate-skills/discussions/categories/ideas)
 
 ## References
 
-- `shared/references/social-data-providers.md` — API configuration and provider options
-- `shared/references/flywheel-connections.md` — master flywheel connection map
-- `shared/references/affiliate-glossary.md` — affiliate marketing terminology
-- `shared/references/feedback-protocol.md` — issue detection and reporting standard
+- `shared/references/operacao/glossario-afiliados-br.md` — affiliate marketing terminology
 
 ## Flywheel Connections
 
@@ -479,8 +429,6 @@ Report issues: [GitHub Issues](https://github.com/Affitor/affiliate-skills/issue
 - `reddit-post-writer` (S2) — top Reddit posts + engagement data
 - `content-pillar-atomizer` (S2) — platform performance data for allocation
 - `competitor-spy` (S1) — top_creators data (who's dominating this keyword)
-- `keyword-cluster-architect` (S3) — engagement data per keyword for cluster prioritization
-- `affiliate-blog-builder` (S3) — winning formats and gaps for blog content angles
 
 ### Fed By
 - `competitor-spy` (S1) — competitor URLs/channels to analyze specifically

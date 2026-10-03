@@ -15,7 +15,6 @@ version: "1.0.0"
 tags: ["affiliate-marketing", "content-creation", "research", "content-brief", "source-collection"]
 compatibility: "Claude Code, ChatGPT, Gemini CLI, Cursor, Windsurf, OpenClaw, any AI agent"
 metadata:
-  author: affitor
   version: "1.0"
   stage: S2-Content
 ---
@@ -32,8 +31,7 @@ forces research-first content creation: find real articles, extract real data, t
 write from those sources. The result is content with specific stats, real quotes, and
 current information that readers (and Google) actually value.
 
-Inspired by the [content-pipeline](https://github.com/Affitor/content-pipeline) approach:
-Topic → Search → Select sources → Synthesize → Write with context.
+Research-first content creation: Topic → Search → Select sources → Synthesize → Write with context.
 
 ## Stage
 
@@ -275,7 +273,6 @@ recommended_next_skill: string
 - **Key data:** [stat 3], [fact 1]
 - **Best format:** Blog article
 - **Unique value:** [Why this is different from Angle 1]
-→ Run: `affiliate-blog-builder` with angle: "[this angle]"
 
 #### Angle 3: "[Title]" (Contrarian)
 - **Primary source:** [#7] — [title]
@@ -329,44 +326,19 @@ User: "Research what people are really saying about ClickUp on Reddit"
 → Unique angle: Reddit users love the free tier but hate the learning curve →
   "ClickUp: the free tool that takes a month to learn (and why it's still worth it)"
 
-## Feedback & Issue Reporting
-
-When this skill produces unexpected, incomplete, or incorrect output, generate a
-`skill_feedback` block (see `shared/references/feedback-protocol.md` for full schema).
-
-**Skill-specific failure modes:**
-- **Most sources paywalled:** <3 sources fully fetched. Report as `data_quality`, list which URLs failed.
-- **All sources same perspective:** No balanced/critical viewpoints found. Report as `data_quality`, note bias direction.
-- **Hallucinated stats:** Agent generated a stat not from any fetched source. Report as `hallucination`, critical severity.
-- **Angles not unique:** All 3 angles are rephrased versions of the same take. Report as `wrong_output`.
-
-**Auto-detect triggers:**
-- `sources_fetched` < 3 (most failed)
-- All source `tags` are identical (no diversity)
-- Any data point in `master_data.stats` cannot be traced to a specific source URL
-- `angles` array has <2 entries
-
-Report issues: [GitHub Issues](https://github.com/Affitor/affiliate-skills/issues/new?labels=skill-feedback&title=content-research-brief) | [Discussions](https://github.com/Affitor/affiliate-skills/discussions/categories/ideas)
-
 ## References
 
-- `shared/references/social-data-providers.md` — API configuration for enhanced search
-- `shared/references/flywheel-connections.md` — master flywheel connection map
-- `shared/references/ftc-compliance.md` — source attribution and disclosure requirements
-- `shared/references/feedback-protocol.md` — issue detection and reporting standard
+- `shared/references/brasil/compliance-br.md` — source attribution and disclosure requirements
 
 ## Flywheel Connections
 
 ### Feeds Into
 - `viral-post-writer` (S2) — research brief with angles, data points, and quotes
-- `affiliate-blog-builder` (S3) — deep research for long-form articles
 - `tiktok-script-writer` (S2) — key stats and hooks for video scripts
 - `twitter-thread-writer` (S2) — data-rich thread material
 - `reddit-post-writer` (S2) — real user opinions for authentic Reddit content
 - `content-pillar-atomizer` (S2) — research brief as the pillar to atomize
 - `infographic-generator` (S2) — key stats and data for visual content
-- `comparison-post-writer` (S3) — multi-source comparison data
-- `listicle-generator` (S3) — curated sources for listicle content
 
 ### Fed By
 - `trending-content-scout` (S1) — trending topics and content gaps to research deeper
@@ -384,7 +356,6 @@ chain_metadata:
   timestamp: string
   suggested_next:
     - "viral-post-writer"
-    - "affiliate-blog-builder"
     - "infographic-generator"
     - "content-pillar-atomizer"
 ```

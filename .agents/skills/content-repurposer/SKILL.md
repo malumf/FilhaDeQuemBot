@@ -11,14 +11,13 @@ version: "1.0.0"
 tags: ["affiliate-marketing", "automation", "scaling", "workflow", "repurposing", "multi-format"]
 compatibility: "Claude Code, ChatGPT, Gemini CLI, Cursor, Windsurf, OpenClaw, any AI agent"
 metadata:
-  author: affitor
   version: "1.0"
   stage: S7-Automation
 ---
 
 # Content Repurposer
 
-Repurpose one piece of affiliate content into multiple formats — blog post to tweets, landing page to email, video script to blog, social post to newsletter. Each output is adapted to the target platform's rules, tone, length, and FTC requirements. Output is a set of ready-to-post content blocks.
+Repurpose one piece of affiliate content into multiple formats — blog post to tweets, landing page to email, video script to blog, social post to newsletter. Each output is adapted to the target platform's rules, tone, length, and disclosure requirements (per `shared/references/brasil/compliance-br.md`). Output is a set of ready-to-post content blocks.
 
 ## Stage
 
@@ -83,7 +82,7 @@ For each target format:
 2. Rewrite in the platform's native voice and format
 3. Adjust length to platform norms
 4. Place affiliate link according to platform best practices
-5. Add platform-appropriate FTC disclosure
+5. Add the platform-appropriate disclosure per `shared/references/brasil/compliance-br.md`
 
 ### Step 4: Add Platform-Specific Posting Guides
 
@@ -103,7 +102,7 @@ Before presenting output, verify:
 
 - [ ] Each format is adapted to its platform (not copy-pasted across formats)
 - [ ] Character counts are within platform limits
-- [ ] FTC disclosure present in every variant that contains affiliate link
+- [ ] Disclosure present in every variant that contains affiliate link
 - [ ] Core value proposition preserved across all repurposed formats
 - [ ] Affiliate link placement follows platform-specific rules
 
@@ -124,7 +123,7 @@ outputs:
     platform: string           # which platform this is for
     character_count: number
     affiliate_link_placement: string  # where the link goes
-    disclosure: string         # FTC disclosure used
+    disclosure: string         # disclosure used
     posting_guide:
       best_time: string
       hashtags: string[]
@@ -142,14 +141,14 @@ outputs:
 
 - **Source content too short (<100 words)**: "The source content is quite short. I'll work with what's here, but longer source content produces better repurposed variants. Consider using the full blog post rather than just the intro."
 - **No affiliate link**: "I'll repurpose the content without an affiliate link. Add `[YOUR_AFFILIATE_LINK]` where I've marked the CTA before posting."
-- **Incompatible format**: "Converting a tweet to a blog post is more like 'expanding' than 'repurposing.' Use S3 (affiliate-blog-builder) to write a full blog post around this topic instead."
+- **Incompatible format**: "Converting a tweet to a blog post is more like 'expanding' than 'repurposing.' Write a full blog post around this topic instead."
 
 ## Examples
 
 ### Example 1: Blog to social media
 
 **User**: "Turn my HeyGen review blog post into a tweet thread and LinkedIn post"
-**Action**: Extract key points from the blog (top 5 features, pricing, verdict). Tweet thread: Hook tweet → 5 feature tweets with mini-takes → verdict tweet → CTA tweet with link + #ad. LinkedIn post: Professional angle (time savings, ROI), personal experience tone, link in first comment, #ad disclosure.
+**Action**: Extract key points from the blog (top 5 features, pricing, verdict). Tweet thread: Hook tweet → 5 feature tweets with mini-takes → verdict tweet → CTA tweet with link + disclosure. LinkedIn post: Professional angle (time savings, ROI), personal experience tone, link in first comment, disclosure.
 
 ### Example 2: Landing page to email
 
@@ -159,13 +158,11 @@ outputs:
 ### Example 3: Social post to newsletter
 
 **User**: "My LinkedIn post about AI tools got 500 likes. Turn it into a newsletter."
-**Action**: Expand the LinkedIn post's hook into a newsletter intro. Add depth: examples, data, personal experience that couldn't fit in 1,300 chars. Structure: Hook → context → 3 insights → recommendation → CTA. Include FTC disclosure and affiliate link.
+**Action**: Expand the LinkedIn post's hook into a newsletter intro. Add depth: examples, data, personal experience that couldn't fit in 1,300 chars. Structure: Hook → context → 3 insights → recommendation → CTA. Include the disclosure and affiliate link.
 
 ## References
 
-- `shared/references/ftc-compliance.md` — Per-platform FTC disclosure rules. Read in Step 3.
-- `shared/references/affitor-branding.md` — Branding guidelines for page outputs. Referenced in Step 3.
-- `shared/references/flywheel-connections.md` — master flywheel connection map
+- `shared/references/brasil/compliance-br.md` — Per-platform disclosure rules (Brasil). Read in Step 3.
 
 ## Revenue & Action Plan
 
@@ -193,8 +190,6 @@ After 14 days: which repurposed format drove the most affiliate clicks? Focus yo
 - `social-media-scheduler` (S5) — repurposed content to schedule
 
 ### Fed By
-- `affiliate-blog-builder` (S3) — blog articles to repurpose
-- `landing-page-creator` (S4) — landing page copy to repurpose into emails
 - `performance-report` (S6) — identifies top-performing content worth repurposing
 
 ### Feedback Loop

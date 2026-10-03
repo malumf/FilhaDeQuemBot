@@ -2,8 +2,8 @@
 name: create-skill
 description: >
   Turn a repeatable AI prompt or workflow into a structured, shareable skill for the
-  affiliate-skills GitHub repository. Use this skill when the user wants to create a new skill, write a
-  SKILL.md, convert a prompt to a skill, share a skill via the GitHub repo, or document
+  repository. Use this skill when the user wants to create a new skill, write a
+  SKILL.md, convert a prompt to a skill, or document
   an AI workflow.
   Also trigger for: "create a skill", "write a skill", "make this a skill",
   "turn this into a skill", "publish skill", "add skill to list", "write SKILL.md",
@@ -13,17 +13,14 @@ version: "1.0.0"
 tags: ["meta", "skill-writing", "directory", "publishing", "workflow", "prompt-engineering"]
 compatibility: "Claude Code, ChatGPT, Gemini CLI, Cursor, Windsurf, OpenClaw, any AI agent"
 metadata:
-  author: affitor
   version: "1.0"
   stage: S8-Meta
 ---
 
-# List Affitor Skill
+# Create Skill
 
-Turn a repeatable AI prompt or workflow into a structured, shareable skill for the
-[affiliate-skills GitHub repository](https://github.com/Affitor/affiliate-skills).
-The output is a complete SKILL.md file that works in any AI agent — shared via
-`npx skills add Affitor/affiliate-skills` so anyone can install it.
+Turn a repeatable AI prompt or workflow into a structured, shareable skill.
+The output is a complete SKILL.md file that works in any AI agent.
 
 ## Stage
 
@@ -32,7 +29,7 @@ This skill belongs to Stage S8: Meta
 ## When to Use
 
 - User has a prompt they keep reusing and wants to turn it into a shareable skill
-- User wants to create a new skill for the affiliate-skills repository
+- User wants to create a new skill for the repository
 - User wants to write a SKILL.md file in the standard format
 - User says "make this a skill" or "write a skill for X"
 - User wants to package an AI workflow so others can replicate it
@@ -74,7 +71,7 @@ Based on the analysis, determine:
 | Field | How to decide |
 |-------|--------------|
 | `name` | Short, action-oriented. "Comparison Post Writer" not "A Skill for Writing Comparison Posts" |
-| `slug` | kebab-case of name, e.g., `comparison-post-writer` |
+| `slug` | kebab-case of name |
 | `category` | One of: research, content, seo, landing, distribution, analytics, automation, meta |
 | `level` | beginner (1-step, no tools), intermediate (multi-step, 1 tool), advanced (complex workflow, multiple tools) |
 | `stage` | S1-Research, S2-Content, S3-Blog, S4-Landing, S5-Distribution, S6-Analytics, S7-Automation, S8-Meta |
@@ -97,7 +94,7 @@ version: "1.0.0"
 tags: [relevant tags]
 compatibility: "Claude Code, ChatGPT, Gemini CLI, Cursor, Windsurf, OpenClaw, any AI agent"
 metadata:
-  author: [user handle or "affitor"]
+  author: [user handle]
   version: "1.0"
   stage: [S1-S8]
 ---
@@ -152,7 +149,7 @@ Links to supplementary reference files if applicable.
 ### Step 4: Write the README Description
 
 Separately from the SKILL.md, write a community-facing description for the skill's
-README section (for GitHub and the affiliate-skills registry). This is what people
+README section (for the repository README). This is what people
 see when browsing — it sells the skill, not documents it.
 
 Structure:
@@ -171,8 +168,8 @@ This is NOT the SKILL.md content — it's a human-friendly summary for discovery
 
 Present two clearly separated outputs:
 
-1. **SKILL.md** — the full file, ready to save to `skills/{stage}/{slug}/SKILL.md`
-2. **README Description** — community-facing description for the GitHub repo and registry
+1. **SKILL.md** — the full file, ready to save to `.agents/skills/{slug}/SKILL.md`
+2. **README Description** — community-facing description for the repository README
 
 ### Step 6: Self-Validation
 
@@ -196,8 +193,8 @@ Other skills consume these fields from conversation context:
   output_schema_version: "1.0.0"
   skill_md: string           # Complete SKILL.md file content (ready to write to disk)
   listing: {
-    name: string             # "Comparison Post Writer"
-    slug: string             # "comparison-post-writer"
+    name: string             # Display name of the new skill
+    slug: string             # kebab-case slug derived from the name
     description: string      # Community-facing description for GitHub README / registry
     content: string          # Full SKILL.md content (for the content field)
     category: string         # "content", "research", "seo", etc.
@@ -318,7 +315,6 @@ chain_metadata YAML block
 | Category | [category] |
 | Level | [level] |
 | Tags | [tag1, tag2, tag3] |
-| Install | npx skills add Affitor/affiliate-skills |
 
 ---
 
@@ -333,7 +329,7 @@ chain_metadata YAML block
 - **Prompt is too simple for a skill:** If the prompt is a single sentence with no variable inputs (e.g., "write me a joke"), tell the user this doesn't need to be a skill — it's already a prompt. Skills add value when there are variable inputs, structured outputs, and quality concerns.
 - **Prompt does too many things:** If the workflow has 10+ distinct steps covering different domains, suggest splitting into 2-3 focused skills that chain together via flywheel connections.
 - **No clear output format:** If the user can't describe what good output looks like, ask for 1-2 examples. Build the Output Format section from those examples.
-- **User wants to copy an existing skill:** Check if a similar skill already exists in the affiliate-skills repo. If so, suggest improving the existing one rather than creating a duplicate.
+- **User wants to copy an existing skill:** Check if a similar skill already exists in this repository. If so, suggest improving the existing one rather than creating a duplicate.
 
 ## Examples
 
@@ -348,7 +344,7 @@ Analysis:
 - Failure mode: generic listicle instead of specific comparison
 - Stage: S3-Blog, Category: seo
 
-Output: SKILL.md with `comparison-post-writer` slug, detailed workflow for researching both products, building comparison tables, writing specific pros/cons, and a quality gate that checks for concrete feature comparisons (not generic praise).
+Output: SKILL.md with a kebab-case slug, detailed workflow for researching both products, building comparison tables, writing specific pros/cons, and a quality gate that checks for concrete feature comparisons (not generic praise).
 
 **Example 2: Packaging a workflow that spans multiple tools**
 
@@ -372,12 +368,12 @@ Response: Ask clarifying questions — "What kind of Twitter threads? About a pr
 ## Revenue & Action Plan
 
 ### Expected Outcomes
-- **Authority potential**: Published skills build your authority as an affiliate marketing expert. Each skill in the affiliate-skills repo acts as a lead magnet — users install it, star the repo, and discover your work. Top skill contributors see compounding GitHub traffic and community recognition
+- **Authority potential**: Published skills build your authority as an affiliate marketing expert. Each skill in the repository acts as a lead magnet — users install it and discover your work. Skill contributors see compounding traffic and community recognition
 - **Benchmark**: Skills used in real workflows get referenced, forked, and improved by the community. The first few installs are the hardest — after that, word-of-mouth takes over
-- **Key metric to track**: GitHub stars + installs via `npx skills add Affitor/affiliate-skills`. Secondary: community discussions, PRs, and mentions
+- **Key metric to track**: Skill adoption (installs and usage). Secondary: community discussions, PRs, and mentions
 
 ### Do This Right Now (15 min)
-1. **Submit the skill via GitHub PR** — save SKILL.md to `skills/{stage}/{slug}/SKILL.md` and open a PR to Affitor/affiliate-skills
+1. **Add the skill to the repository** — save SKILL.md to `.agents/skills/{slug}/SKILL.md`
 2. **Share the skill** on 2-3 platforms (X, LinkedIn, Reddit r/ChatGPT) with a brief demo of what it does
 3. **Add the skill to your bio link page** — it's a portfolio piece that builds authority
 4. **Ask 2-3 colleagues to try it** and give feedback via GitHub Issues or Discussions
@@ -393,11 +389,10 @@ After 7 days: how many installs and GitHub stars? After 30 days: any community P
 ### Feeds Into
 - `skill-finder` (S8) — newly created skills appear in the repo for discovery
 - `self-improver` (S8) — skill structure enables automated quality improvement
-- `compliance-checker` (S8) — validates skill outputs against FTC and platform rules
+- `compliance-checker` (S8) — validates skill outputs against disclosure and platform rules
 - Any stage-specific skill — new skills expand the flywheel
 
 ### Fed By
-- `submit-program` (S1) — program listings inspire related skill ideas
 - `niche-opportunity-finder` (S1) — high-opportunity niches reveal skill gaps
 - Community requests via GitHub Issues — "I wish there was a skill for X"
 
@@ -429,8 +424,3 @@ Before marking this skill's output as complete:
 6. Quality gate items are objectively testable, not subjective ("good quality")
 7. The README description is distinct from the SKILL.md content — it's a human-friendly summary
 8. Frontmatter `name` field matches the slug exactly
-
-## References
-
-- `shared/references/flywheel-connections.md` — master flywheel connection map
-- `shared/references/skill-template.md` — canonical SKILL.md template (if exists)

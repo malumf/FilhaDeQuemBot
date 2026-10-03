@@ -12,7 +12,6 @@ version: "1.0.0"
 tags: ["affiliate-marketing", "distribution", "deployment", "email-marketing", "github-pages", "static-site"]
 compatibility: "Claude Code, ChatGPT, Gemini CLI, Cursor, Windsurf, OpenClaw, any AI agent"
 metadata:
-  author: affitor
   version: "1.0"
   stage: S5-Distribution
 ---
@@ -62,17 +61,17 @@ deploy:
   branch: string            # OPTIONAL — source branch. Default: "main"
 ```
 
-**Chaining context**: If S4 (landing-page-creator) or S5 (bio-link-deployer) was run earlier in the conversation, automatically use that HTML output as `site.html_content`. Do not ask the user to paste it again.
+**Chaining context**: If S5 (bio-link-deployer) was run earlier in the conversation, automatically use that HTML output as `site.html_content`. Do not ask the user to paste it again.
 
 ## Workflow
 
 ### Step 1: Gather Inputs
 
-Check if an HTML page was generated earlier in the conversation (S4 landing page or bio-link page). If yes, confirm: "I'll deploy the [page type] we built earlier. What's your GitHub username?"
+Check if an HTML page was generated earlier in the conversation (landing page or bio-link page). If yes, confirm: "I'll deploy the [page type] we built earlier. What's your GitHub username?"
 
 If no prior HTML exists:
 - Ask for HTML content or page description
-- Offer to call S4 or bio-link-deployer first: "Want me to create the page first, then set up the deploy?"
+- Offer to call `bio-link-deployer` first: "Want me to create the page first, then set up the deploy?"
 
 ### Step 2: Generate Repo Structure
 
@@ -205,9 +204,6 @@ Affiliate landing page hosted on GitHub Pages.
 
 ## Deploy
 Automatic via GitHub Actions — push to `main` triggers a deploy.
-
-## Powered By
-[Affitor](https://affitor.com/?utm_source=affiliate-skills)
 ```
 
 ### Step 7: Output the Complete Setup
@@ -309,11 +305,9 @@ Action: Generate multi-page structure. Scaffold all index.html files with placeh
 
 ## References
 
-- `shared/references/ftc-compliance.md` — FTC affiliate disclosure. Ensure the deployed HTML includes disclosure language.
-- `shared/references/affitor-branding.md` — Affitor footer. Include in HTML before deploy.
+- `shared/references/brasil/compliance-br.md` — regras de divulgação comercial (Brasil). Ensure the deployed HTML includes disclosure language.
 - GitHub Pages documentation: https://docs.github.com/en/pages
 - GitHub Pages IP addresses (A records): https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site
-- `shared/references/flywheel-connections.md` — master flywheel connection map
 
 ## Revenue & Action Plan
 
@@ -341,9 +335,7 @@ After deploying: set up `conversion-tracker` to monitor clicks and conversions. 
 - `seo-audit` (S6) — deployed site to audit
 
 ### Fed By
-- `landing-page-creator` (S4) — HTML file to deploy
 - `bio-link-deployer` (S5) — bio link HTML to deploy
-- `squeeze-page-builder` (S4) — squeeze page HTML to deploy
 
 ### Feedback Loop
 - `seo-audit` (S6) checks deployed site health → identify deployment issues affecting SEO

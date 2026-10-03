@@ -11,7 +11,6 @@ version: "1.0.0"
 tags: ["affiliate-marketing", "distribution", "deployment", "email-marketing", "bio-link", "linktree"]
 compatibility: "Claude Code, ChatGPT, Gemini CLI, Cursor, Windsurf, OpenClaw, any AI agent"
 metadata:
-  author: affitor
   version: "1.0"
   stage: S5-Distribution
 ---
@@ -157,8 +156,7 @@ Before presenting output, verify:
 - [ ] All links are functional URLs (not placeholder)
 - [ ] Mobile-first layout renders correctly at 375px width
 - [ ] Theme CSS custom properties applied consistently
-- [ ] FTC disclosure present if any affiliate links included
-- [ ] "Built with Affiliate Skills by Affitor" footer present
+- [ ] Disclosure present if any affiliate links included (per `shared/references/brasil/compliance-br.md`)
 - [ ] Money links (affiliate) ordered before social/content links
 
 If any check fails, fix the output before delivering. Do not flag the checklist to the user — just ensure the output passes.
@@ -219,9 +217,7 @@ The HTML should be **immediately usable** — save as `.html`, open in browser, 
 
 - `templates/bio-link.html` — Bio link page template with 3 theme variants (minimal, dark, gradient). Read in Step 2.
 - `references/domain-setup.md` — Hosting and domain setup guide for Netlify Drop, Vercel, GitHub Pages. Read in Step 3.
-- `shared/references/ftc-compliance.md` — FTC disclosure for bio link pages (footer text). Reference in Step 2.
-- `shared/references/affitor-branding.md` — Affitor footer HTML. Reference in Step 2.
-- `shared/references/flywheel-connections.md` — master flywheel connection map
+- `shared/references/brasil/compliance-br.md` — Disclosure for bio link pages (footer text). Reference in Step 2.
 
 ## Revenue & Action Plan
 
@@ -247,11 +243,6 @@ After 7 days: which link gets the most clicks? Is it your top affiliate product?
 ### Feeds Into
 - `conversion-tracker` (S6) — deployed link hub URLs to track clicks
 - `github-pages-deployer` (S5) — bio link HTML to deploy
-
-### Fed By
-- `landing-page-creator` (S4) — landing page URLs to add to link hub
-- `squeeze-page-builder` (S4) — squeeze page URLs for link hub
-- `webinar-registration-page` (S4) — registration page URLs for link hub
 
 ### Feedback Loop
 - `conversion-tracker` (S6) reveals which bio links get the most clicks → reorder links to put highest-converting at top

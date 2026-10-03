@@ -12,7 +12,6 @@ version: "1.0.0"
 tags: ["affiliate-marketing", "distribution", "deployment", "email-marketing", "email", "drip-campaign"]
 compatibility: "Claude Code, ChatGPT, Gemini CLI, Cursor, Windsurf, OpenClaw, any AI agent"
 metadata:
-  author: affitor
   version: "1.0"
   stage: S5-Distribution
 ---
@@ -116,9 +115,9 @@ For each email, write all four components:
 
 ### Step 4: Add Compliance Disclosures
 
-Each email that contains an affiliate link must include a one-line FTC disclosure. Place it immediately before or after the affiliate link:
+Each email that contains an affiliate link must include a one-line disclosure (models in `shared/references/brasil/compliance-br.md`). Place it immediately before or after the affiliate link:
 
-> *Affiliate disclosure: I may earn a commission if you purchase through my link, at no extra cost to you.*
+> *Aviso: este conteúdo contém links de afiliado. Se você comprar por eles, eu recebo uma comissão, sem custo adicional para você.*
 
 For email clients that strip formatting, also include plain text disclosure in the footer.
 
@@ -148,7 +147,7 @@ After all emails, provide the Setup Instructions section.
 Before presenting output, verify:
 
 - [ ] All 5-7 emails present with subject, preview text, body, and CTA
-- [ ] FTC disclosure included on every email containing affiliate links
+- [ ] Disclosure included on every email containing affiliate links
 - [ ] Email spacing is logical (not all on day 1)
 - [ ] Value emails outnumber pitch emails in the sequence
 - [ ] CTA links point to correct affiliate URLs
@@ -222,9 +221,7 @@ Action: Ask for affiliate URL and audience. Use Notion affiliate program knowled
 
 ## References
 
-- `shared/references/ftc-compliance.md` — FTC affiliate disclosure requirements. Apply to every email containing an affiliate link.
-- `shared/references/affitor-branding.md` — Affitor footer. Include in plain text footer of each email.
-- `shared/references/flywheel-connections.md` — master flywheel connection map
+- `shared/references/brasil/compliance-br.md` — regras de divulgação comercial (Brasil). Apply to every email containing an affiliate link.
 
 ## Flywheel Connections
 
@@ -234,11 +231,6 @@ Action: Ask for affiliate URL and audience. Use Notion affiliate program knowled
 
 ### Fed By
 - `affiliate-program-search` (S1) — `recommended_program` product data
-- `landing-page-creator` (S4) — landing page as email link destination
-- `grand-slam-offer` (S4) — offer framing for email copy
-- `bonus-stack-builder` (S4) — bonus details for email content
-- `value-ladder-architect` (S4) — transition sequences between ladder rungs
-- `squeeze-page-builder` (S4) — opt-in page feeds email list
 
 ### Feedback Loop
 - `conversion-tracker` (S6) measures email click-through and conversion rates → optimize subject lines, send timing, and CTA placement

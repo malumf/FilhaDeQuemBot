@@ -14,7 +14,6 @@ version: "1.0.0"
 tags: ["affiliate-marketing", "research", "niche-analysis", "program-discovery", "competitive-analysis"]
 compatibility: "Claude Code, ChatGPT, Gemini CLI, Cursor, Windsurf, OpenClaw, any AI agent"
 metadata:
-  author: affitor
   version: "1.0"
   stage: S1-Research
 ---
@@ -89,25 +88,21 @@ For each competitor site/channel:
 - `web_search "[creator name] how I make money affiliate"` — creator transparency posts
 
 Extract for each program found: name, estimated prominence (primary/secondary/mentioned),
-content type promoting it, and whether it appears on openaffiliate.dev.
+content type promoting it.
 
 ### Step 2.5: Analyze Competitor Content Engagement (data-driven)
 
 For each competitor, scan their recent content performance across social platforms.
 This reveals not just WHAT they create, but HOW WELL it performs.
 
-**With API (optional — see `shared/references/social-data-providers.md`):**
-- Search YouTube/TikTok for competitor brand name or channel
-- Get views, likes, comments, shares for their top 10-20 content pieces
-- Calculate engagement_score for each: `(likes × 2 + comments × 3 + shares × 5) / max(views, 1) × 1000`
-- Identify which content format gets them the highest engagement
-- Compare their engagement against `trending-content-scout` benchmark (if available)
-
-**Without API (default):**
+**Engagement scan (web_search + web_fetch):**
 - `web_search "[competitor name] youtube channel"` → find their channel
 - `web_fetch` channel page → extract view counts from visible videos
 - `web_search "[competitor name] tiktok"` → find top videos with view counts
 - `web_search "[competitor name] best video"` → find their highest-performing content
+- Calculate engagement_score for each where metrics are available: `(likes × 2 + comments × 3 + shares × 5) / max(views, 1) × 1000`
+- Identify which content format gets them the highest engagement
+- Compare their engagement against `trending-content-scout` benchmark (if available)
 - Note: approximate data, but reveals relative performance patterns
 
 **Extract for each competitor:**
@@ -182,7 +177,7 @@ Synthesize findings into a 3-part report:
 Before presenting output, verify:
 
 - [ ] Confidence levels match evidence strength (confirmed = affiliate link found, likely = brand mention pattern, possible = inferred)
-- [ ] Programs cross-checked on openaffiliate.dev where possible
+- [ ] Program claims cross-checked against fetched sources where possible
 - [ ] Replicability score accounts for barriers (domain authority, team size)
 - [ ] No hallucinated competitor data — all claims traceable to web_search results
 
@@ -212,7 +207,6 @@ If any check fails, fix the output before delivering. Do not flag the checklist 
       name: string           # "ConvertKit"
       promoted_by: string[]  # Which competitors promote it
       confidence: string     # "confirmed" | "likely" | "possible"
-      openaffiliate_url: string | null  # If found on openaffiliate.dev
     }
   ]
   content_gaps: string[]     # Opportunities to fill
@@ -237,10 +231,10 @@ If any check fails, fix the output before delivering. Do not flag the checklist 
 
 ### Programs Worth Promoting (Validated by Competitors)
 
-| Program | Promoted By | Evidence | On openaffiliate.dev |
-|---------|------------|----------|---------------------|
-| [Program A] | [2 competitors] | Prominent CTA buttons, review posts | Yes |
-| [Program B] | [1 competitor] | Income report mention | Check manually |
+| Program | Promoted By | Evidence |
+|---------|------------|----------|
+| [Program A] | [2 competitors] | Prominent CTA buttons, review posts |
+| [Program B] | [1 competitor] | Income report mention |
 
 ---
 
@@ -285,7 +279,6 @@ If any check fails, fix the output before delivering. Do not flag the checklist 
 User: "Spy on what affiliate programs income school recommends"
 → web_fetch incomeschool.com, look for affiliate disclosures and outbound links
 → Find: Bluehost, Ezoic, Rank Math, Jasper — extract with confidence levels
-→ Map to openaffiliate.dev programs
 → Output intelligence report with content gaps in their niche
 
 **Example 2:**
@@ -304,10 +297,8 @@ User: "I'm entering the email marketing niche, help me spy on competitors"
 
 ## References
 
-- `affiliate-program-search/references/openaffiliate-api.md` — validate found programs on openaffiliate.dev
-- `shared/references/affiliate-glossary.md` — affiliate link pattern reference
-- `shared/references/ftc-compliance.md` — understanding competitor disclosures
-- `shared/references/flywheel-connections.md` — master flywheel connection map
+- `shared/references/operacao/glossario-afiliados-br.md` — affiliate link pattern reference
+- `shared/references/brasil/compliance-br.md` — understanding competitor disclosures
 
 ## Flywheel Connections
 
@@ -315,9 +306,6 @@ User: "I'm entering the email marketing niche, help me spy on competitors"
 - `trending-content-scout` (S1) — competitor channels/profiles to scout for engagement data
 - `content-angle-ranker` (S1) — competitor gaps as angle candidates
 - `viral-post-writer` (S2) — competitor gaps reveal content opportunities
-- `purple-cow-audit` (S1) — competitive landscape for product evaluation
-- `grand-slam-offer` (S4) — competitive gaps to exploit in offers
-- `bonus-stack-builder` (S4) — what competitors' affiliates offer (gaps to exploit)
 - `category-designer` (S8) — competitive landscape to differentiate from
 
 ### Fed By
@@ -336,7 +324,4 @@ chain_metadata:
   suggested_next:
     - "trending-content-scout"
     - "content-angle-ranker"
-    - "purple-cow-audit"
-    - "grand-slam-offer"
-    - "affiliate-blog-builder"
 ```

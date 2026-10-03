@@ -15,7 +15,6 @@ version: "1.0.0"
 tags: ["affiliate-marketing", "research", "content-creation", "data-driven", "ranking", "angle-selection"]
 compatibility: "Claude Code, ChatGPT, Gemini CLI, Cursor, Windsurf, OpenClaw, any AI agent"
 metadata:
-  author: affitor
   version: "1.0"
   stage: S1-Research
 ---
@@ -345,7 +344,7 @@ recommended_skill_params:        # ready-to-use parameters for the next skill
 
 **To create Angle #1:**
 ```
-Skill: [viral-post-writer | tiktok-script-writer | affiliate-blog-builder]
+Skill: [viral-post-writer | tiktok-script-writer]
 Parameters:
   product: [product name]
   format: [comparison]
@@ -357,7 +356,6 @@ Parameters:
 **Alternative paths:**
 - `tiktok-script-writer` — for short-form video version of Angle #1
 - `content-pillar-atomizer` — create a blog post, then atomize across all platforms
-- `comparison-post-writer` — if the winning angle is a comparison
 ```
 
 ## Error Handling
@@ -399,29 +397,9 @@ User: "I'm good at storytelling and humor. What should I create about AI writing
 → Top: "I let AI write my LinkedIn posts for a week. My boss noticed." — Score: 9.1
   (story format, relatable hook, low competition on LinkedIn for this angle, perfect creator fit)
 
-## Feedback & Issue Reporting
-
-When this skill produces unexpected, incomplete, or incorrect output, generate a
-`skill_feedback` block (see `shared/references/feedback-protocol.md` for full schema).
-
-**Skill-specific failure modes:**
-- **All angles score within 0.5 points:** Scoring not differentiated enough. Report as `wrong_output` with the scores.
-- **Top angle is generic:** "Write a review of X" instead of a specific, titled angle. Report as `data_quality`.
-- **Downstream skill can't use recommended_skill_params:** Schema mismatch. Report as `chain_break`.
-
-**Auto-detect triggers:**
-- Score range (max - min) < 1.0 across all angles
-- <8 angles generated
-- `recommended_skill_params` missing required fields for the suggested next skill
-
-Report issues: [GitHub Issues](https://github.com/Affitor/affiliate-skills/issues/new?labels=skill-feedback&title=content-angle-ranker) | [Discussions](https://github.com/Affitor/affiliate-skills/discussions/categories/ideas)
-
 ## References
 
-- `shared/references/social-data-providers.md` — API configuration and engagement score formula
-- `shared/references/flywheel-connections.md` — master flywheel connection map
-- `shared/references/platform-rules.md` — platform-specific content guidelines
-- `shared/references/feedback-protocol.md` — issue detection and reporting standard
+- `shared/references/nucleo/experimentacao-metricas.md` — engagement score formula
 
 ## Flywheel Connections
 
@@ -430,8 +408,6 @@ Report issues: [GitHub Issues](https://github.com/Affitor/affiliate-skills/issue
 - `tiktok-script-writer` (S2) — TikTok-specific angle with duration and hook
 - `twitter-thread-writer` (S2) — X-specific angle with hook
 - `reddit-post-writer` (S2) — Reddit-specific angle with subreddit suggestion
-- `affiliate-blog-builder` (S3) — blog angle with SEO keyword alignment
-- `comparison-post-writer` (S3) — if winning angle is a comparison
 - `content-pillar-atomizer` (S2) — angle as the pillar topic to atomize
 
 ### Fed By
@@ -451,5 +427,4 @@ chain_metadata:
   suggested_next:
     - "viral-post-writer"
     - "tiktok-script-writer"
-    - "affiliate-blog-builder"
 ```

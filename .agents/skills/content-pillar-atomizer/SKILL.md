@@ -13,7 +13,6 @@ version: "1.0.0"
 tags: ["affiliate-marketing", "content-creation", "social-media", "copywriting", "content-strategy", "repurposing"]
 compatibility: "Claude Code, ChatGPT, Gemini CLI, Cursor, Windsurf, OpenClaw, any AI agent"
 metadata:
-  author: affitor
   version: "1.0"
   stage: S2-Content
 ---
@@ -31,7 +30,6 @@ S2: Content Creation — This IS content creation, just at 10x scale. One piece 
 - User has a blog post, article, or long-form content and wants to maximize its reach
 - User asks to "repurpose" or "atomize" content
 - User says "turn this into social posts", "content multiplication", "pillar content"
-- After `affiliate-blog-builder` (S3) produces an article — atomize it into social
 - User wants to maintain consistent content output without creating from scratch daily
 
 ## Input Schema
@@ -55,9 +53,7 @@ tone: string                  # OPTIONAL — "professional" | "casual" | "edgy" 
                               # Default: inferred from pillar content
 ```
 
-**Chaining from S3**: If `affiliate-blog-builder` was run, use its output article as `pillar_content`.
-
-**Chaining from S1 monopoly-niche-finder**: Use `monopoly_niche` positioning to angle all micro-content.
+**Chaining from S3**: If a blog article was produced earlier in the conversation, use it as `pillar_content`.
 
 ## Workflow
 
@@ -99,8 +95,6 @@ Data-driven (LinkedIn hot): Twitter: 3 | LinkedIn: 5 | Reddit: 2 | TikTok: 2 | E
 
 ### Step 2: Platform Mapping
 
-Read `shared/references/platform-rules.md` for platform-specific rules.
-
 For each platform, map the culture:
 
 | Platform | Format | Tone | Length | CTA Style |
@@ -127,7 +121,7 @@ Each piece must:
 - Stand alone (makes sense without reading the pillar)
 - Feel native to the platform (not a copy-paste resize)
 - Carry one clear insight or value point
-- Include appropriate FTC disclosure for affiliate content
+- Include the disclosure per `shared/references/brasil/compliance-br.md` for affiliate content
 
 ### Step 4: Tag for Tracking
 
@@ -142,7 +136,7 @@ Tag each piece with:
 
 - [ ] Each piece feels native to its platform (not copy-pasted)
 - [ ] Each piece stands alone without needing the pillar
-- [ ] FTC disclosure included where affiliate links present
+- [ ] Disclosure included where affiliate links present
 - [ ] No two pieces on the same platform say the same thing
 - [ ] Platform rules followed (Reddit skepticism, LinkedIn professionalism, etc.)
 
@@ -229,7 +223,7 @@ Title: [title]
 ## Error Handling
 
 - **No pillar content provided**: "Paste your blog post or article, or give me the URL and I'll fetch it."
-- **Content too short**: "This is quite short for atomization. I'll extract what I can, but consider writing a longer pillar first with `affiliate-blog-builder`."
+- **Content too short**: "This is quite short for atomization. I'll extract what I can, but consider writing a longer pillar first."
 - **No affiliate angle**: Generate content without affiliate links. Pure value content builds audience for future promotions.
 - **Platform not supported**: "I don't have specific rules for [platform]. I'll format it generically — review before posting."
 
@@ -241,7 +235,7 @@ Title: [title]
 **Example 2:** "Turn this article into LinkedIn and Twitter content"
 → Focus on 2 platforms only. Generate 3 LinkedIn posts (story, insight, question) and 5 Twitter pieces (thread, 3 tweets, hot take).
 
-**Example 3:** "Atomize in volume mode" (after affiliate-blog-builder)
+**Example 3:** "Atomize in volume mode"
 → Pick up article from chain. Generate 25-30 pieces with multiple variations per platform for A/B testing.
 
 ## Revenue & Action Plan
@@ -273,8 +267,6 @@ After 7 days, check: which platform generated the most affiliate link clicks? Do
 ### Fed By
 - `trending-content-scout` (S1) — platform performance data for allocation
 - `content-angle-ranker` (S1) — recommended angle for the pillar topic
-- `affiliate-blog-builder` (S3) — pillar content to atomize
-- `monopoly-niche-finder` (S1) — positioning angle for all pieces
 - `content-repurposer` (S7) — repurposed content to atomize further
 
 ### Feedback Loop
@@ -310,7 +302,4 @@ volume_output:
 
 ## References
 
-- `shared/references/platform-rules.md` — Platform-specific culture, format, and CTA rules
-- `shared/references/ftc-compliance.md` — FTC disclosure per platform type
-- `shared/references/affitor-branding.md` — Branding rules
-- `shared/references/flywheel-connections.md` — Master connection map
+- `shared/references/brasil/compliance-br.md` — Disclosure per platform type (Brasil)

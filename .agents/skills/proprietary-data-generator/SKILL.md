@@ -13,7 +13,6 @@ version: "1.0.0"
 tags: ["affiliate-marketing", "automation", "scaling", "workflow", "data", "original-research"]
 compatibility: "Claude Code, ChatGPT, Gemini CLI, Cursor, Windsurf, OpenClaw, any AI agent"
 metadata:
-  author: affitor
   version: "1.0"
   stage: S7-Automation
 ---
@@ -31,7 +30,6 @@ S7: Automation & Scale — Generating data at scale requires automation. This sk
 - User wants to create content that can't be replicated by competitors
 - User asks about "original research", "surveys", "benchmarks", "proprietary data"
 - User says "data moat", "unique data", "first-party data", "original statistics"
-- After `content-moat-calculator` identifies the need for differentiated content
 - User wants to build authority through data-driven content
 - User wants to create linkable assets that earn backlinks naturally
 
@@ -54,8 +52,6 @@ budget: string                # OPTIONAL — "zero" | "low" ($0-100) | "medium" 
 goal: string                  # OPTIONAL — "content_moat" | "backlink_magnet" | "authority" | "lead_gen"
                               # Default: "content_moat"
 ```
-
-**Chaining from S3 content-moat-calculator**: Use `competitive_advantages` to identify data moat opportunities.
 
 ## Workflow
 
@@ -156,9 +152,7 @@ chain_metadata:
   stage: "automation"
   timestamp: string
   suggested_next:
-    - "affiliate-blog-builder"
     - "content-pillar-atomizer"
-    - "content-moat-calculator"
 ```
 
 ## Output Format
@@ -189,9 +183,9 @@ Subject: [subject line]
 [email/message body]
 
 ### Content Plan (what to publish from this data)
-1. **Blog post:** "[Title]" → build with `affiliate-blog-builder`
+1. **Blog post:** "[Title]"
 2. **Social thread:** Key findings → atomize with `content-pillar-atomizer`
-3. **Lead magnet:** Full report PDF → distribute with `squeeze-page-builder`
+3. **Lead magnet:** Full report PDF
 
 ### Automation Schedule
 - **Collection:** [frequency]
@@ -215,7 +209,7 @@ Subject: [subject line]
 **Example 2:** "Create a benchmark for affiliate marketing earnings"
 → Aggregate public data from case studies, combine with original survey. Monthly recurring data collection. "Affiliate Marketing Earnings Benchmark Q1 2025."
 
-**Example 3:** "Data moat for my content strategy" (after content-moat-calculator)
+**Example 3:** "Data moat for my content strategy"
 → Identify that competitors have generic content but NO original data. Design case study collection: "How 50 Affiliate Marketers Made Their First $1,000." Instant authority.
 
 ## Revenue & Action Plan
@@ -232,26 +226,15 @@ Subject: [subject line]
 4. **Pre-write the blog post outline** using the Content Plan section — so you're ready to publish the moment data comes in
 
 ### Track Your Results
-After data collection: publish the findings as a blog post with `affiliate-blog-builder`. After 30 days: how many backlinks did the data post earn? After 90 days: did organic traffic to your money pages increase? If yes, plan your next data collection round — proprietary data compounds.
-
-> **Next step — copy-paste this prompt:**
-> "Write a blog post presenting my original research findings about [topic]" → runs `affiliate-blog-builder`
+After data collection: publish the findings as a blog post. After 30 days: how many backlinks did the data post earn? After 90 days: did organic traffic to your money pages increase? If yes, plan your next data collection round — proprietary data compounds.
 
 ## Flywheel Connections
 
 ### Feeds Into
-- `affiliate-blog-builder` (S3) — unique data angles for articles nobody else can write
 - `content-pillar-atomizer` (S2) — data findings to atomize across platforms
-- `content-moat-calculator` (S3) — proprietary data IS a moat strengthener
 
 ### Fed By
-- `content-moat-calculator` (S3) — identifies need for differentiated content
 - `performance-report` (S6) — performance data to aggregate
 
 ### Feedback Loop
 - Track backlinks and citations of your data → identify which data points get referenced most → double down on those angles in next collection
-
-## References
-
-- `shared/references/case-studies.md` — Real data-driven success examples
-- `shared/references/flywheel-connections.md` — Master connection map

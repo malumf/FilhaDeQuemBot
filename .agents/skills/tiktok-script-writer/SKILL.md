@@ -14,7 +14,6 @@ version: "1.0.0"
 tags: ["affiliate-marketing", "content-creation", "social-media", "copywriting", "tiktok", "video"]
 compatibility: "Claude Code, ChatGPT, Gemini CLI, Cursor, Windsurf, OpenClaw, any AI agent"
 metadata:
-  author: affitor
   version: "1.0"
   stage: S2-Content
 ---
@@ -123,7 +122,7 @@ Every script follows this structure (adapt timing to duration):
 - 8-30s: Live demo OR narrated walkthrough of key feature
 - 30-38s: Specific result / proof
 - 38-44s: CTA (bio link, comment for link, or "link in bio")
-- 44-45s: FTC disclosure overlay
+- 44-45s: disclosure overlay
 
 **For 30-second scripts:**
 - 0-3s: Hook
@@ -137,7 +136,7 @@ Every script follows this structure (adapt timing to duration):
 - 10-40s: Full demo (2-3 features)
 - 40-52s: Results + pricing mention (anchoring)
 - 52-58s: CTA
-- 58-60s: FTC disclosure
+- 58-60s: disclosure
 
 ### Step 4: Write the Script
 
@@ -155,13 +154,13 @@ Writing rules:
 5. End the hook WITH the setup — don't just ask a question, tease the answer
 6. The demo must be REAL — no vague "and then it does this amazing thing"
 
-### Step 5: Add FTC Disclosure
+### Step 5: Add Affiliate Disclosure
 
-Per `shared/references/ftc-compliance.md` for short-form video:
-- Verbal disclosure if spoken at all (not required but best practice)
-- Text overlay "#ad" or "Affiliate link in bio" must appear during CTA section
+Per `shared/references/brasil/compliance-br.md` for short-form video:
+- Verbal disclosure if spoken at all (best practice)
+- Text overlay with the disclosure (models in compliance-br.md, e.g. "Contém link de afiliado") must appear during CTA section
 - Disclosure must be visible for at least 3 seconds
-- Do NOT bury in caption — overlay is required per FTC guidance
+- Do NOT bury in caption — overlay is the project standard
 
 ### Step 6: Add Production Notes
 
@@ -177,7 +176,7 @@ Before presenting output, verify:
 
 - [ ] Spoken sentences under 10 words each
 - [ ] New visual cut or text overlay every 3-5 seconds
-- [ ] FTC "#ad" appears as text overlay, NOT buried in caption
+- [ ] Disclosure appears as text overlay, NOT buried in caption
 - [ ] Disclosure overlay visible for at least 3 seconds
 - [ ] Hook ends with setup, not just a question
 - [ ] Demo shows specific feature, not vague claims
@@ -204,7 +203,7 @@ If any check fails, fix the output before delivering. Do not flag the checklist 
       ]
       caption: string           # Full TikTok caption
       hashtags: string[]        # Suggested hashtags
-      disclosure: string        # How and when FTC disclosure appears
+      disclosure: string        # How and when the disclosure appears
     }
   ]
   product_name: string
@@ -247,7 +246,7 @@ If any check fails, fix the output before delivering. Do not flag the checklist 
 - **Film:** [Camera vs screen recording breakdown]
 - **Music:** [BPM and mood suggestion]
 - **Best time to post:** [Platform-specific optimal time]
-- **Disclosure:** #ad text overlay appears at [timecode] for [X] seconds
+- **Disclosure:** text overlay appears at [timecode] for [X] seconds
 
 ---
 
@@ -279,7 +278,7 @@ User: "Write a 45-second TikTok script for HeyGen"
 → Hook: Demo first — open with a finished AI video playing
 → Script: [0-3s] Show output video → [3-8s] "Made this in 2 minutes, no camera" →
   [8-30s] Screen record: paste script → avatar speaks → [30-38s] "Used this for
-  my client, saved 4 hours" → [38-44s] "Link in bio, 30-day free trial" → [44-45s] "#ad overlay"
+  my client, saved 4 hours" → [38-44s] "Link in bio, 30-day free trial" → [44-45s] "disclosure overlay"
 
 **Example 2:**
 User: "TikTok script for Notion affiliate, targeting students"
@@ -296,10 +295,9 @@ User: "I need 3 different hooks for a ConvertKit TikTok script"
 
 ## References
 
-- `shared/references/ftc-compliance.md` — disclosure rules for short-form video
-- `shared/references/affiliate-glossary.md` — reward_type and program terminology
-- `shared/references/platform-rules.md` — TikTok/Reels/Shorts format specs
-- `shared/references/flywheel-connections.md` — master flywheel connection map
+- `shared/references/brasil/compliance-br.md` — disclosure rules for short-form video
+- `shared/references/operacao/glossario-afiliados-br.md` — reward_type and program terminology
+- `shared/references/plataformas/tiktok.md` — TikTok/Reels/Shorts format specs
 
 ## Revenue & Action Plan
 
@@ -330,7 +328,6 @@ After 5 videos, check: which hook style got the highest completion rate? Which v
 - `trending-content-scout` (S1) — top TikTok content + engagement data + winning hooks
 - `content-angle-ranker` (S1) — recommended angle with format, hook, and parameters
 - `affiliate-program-search` (S1) — `recommended_program` product data
-- `purple-cow-audit` (S1) — remarkable angles for script hooks
 - `content-pillar-atomizer` (S2) — atomized TikTok scripts from pillar content
 
 ### Feedback Loop

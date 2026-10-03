@@ -1,6 +1,6 @@
 # Affiliate Performance Benchmarks
 
-Use these benchmarks when analyzing program performance. Based on industry data and Affitor case studies.
+Use these benchmarks when analyzing program performance. They are illustrative reference ranges, not guarantees — validate against your own data before relying on them.
 
 ## KPI Benchmarks by Channel
 
@@ -38,7 +38,7 @@ Use these to assign Star/Cash Cow/Question Mark/Dog labels:
 
 ## Realistic Timeline Expectations
 
-From Affitor case studies (`shared/references/case-studies.md`):
+Illustrative expectations (validate against your own data):
 
 | Channel | Time to First Commission | Time to $1K/mo | Time to $3K/mo |
 |---------|-------------------------|-----------------|-----------------|

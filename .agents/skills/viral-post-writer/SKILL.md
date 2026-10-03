@@ -16,14 +16,13 @@ version: "1.0.0"
 tags: ["affiliate-marketing", "content-creation", "social-media", "copywriting", "viral"]
 compatibility: "Claude Code, ChatGPT, Gemini CLI, Cursor, Windsurf, OpenClaw, any AI agent"
 metadata:
-  author: affitor
   version: "1.0"
   stage: S2-Content
 ---
 
 # Viral Post Writer
 
-Write high-converting social media posts that promote affiliate products without feeling salesy. Each post uses proven viral frameworks, is tailored to the target platform, and includes proper FTC disclosure.
+Write high-converting social media posts that promote affiliate products without feeling salesy. Each post uses proven viral frameworks, is tailored to the target platform, and includes the affiliate disclosure per `shared/references/brasil/compliance-br.md`.
 
 ## Stage
 
@@ -126,23 +125,22 @@ Apply the selected framework from `references/viral-frameworks.md`.
 3. **Story > pitch** — wrap the recommendation in a narrative or discovery
 4. **Platform-native format** — see `references/platform-specs.md` for formatting rules
 5. **One CTA only** — don't overwhelm. One clear next step
-6. **FTC compliance** — include disclosure per `shared/references/ftc-compliance.md` placement rules
+6. **Disclosure** — include the affiliate disclosure per `shared/references/brasil/compliance-br.md` placement rules
 
 **Never do:**
 - Start with "I'm excited to share..." (LinkedIn death sentence)
 - Use "game-changer", "revolutionary", "hands down the best" (empty superlatives)
 - Put the link in the main post body on LinkedIn (algorithm penalty)
 - Hard-sell in the first sentence
-- Mention commission rates or that you're an affiliate (FTC requires disclosure, not details)
-- Include "Powered by Affitor" branding (see `shared/references/affitor-branding.md`)
+- Mention specific commission rates (the disclosure flags the affiliate link; it doesn't need the deal details)
 
-### Step 5: Add FTC Disclosure
+### Step 5: Add Affiliate Disclosure
 
-Per platform (from `shared/references/ftc-compliance.md`):
-- **LinkedIn:** "#ad | Affiliate link" at the end of the post body
-- **X:** "#ad" in the tweet containing the link (usually last tweet in thread)
-- **Reddit:** "Full disclosure: affiliate link" at the bottom
-- **Facebook:** "#ad | Affiliate link" at the end
+Use the disclosure models from `shared/references/brasil/compliance-br.md` (short model for social posts), placed before the first click:
+- **LinkedIn:** disclosure at the end of the post body
+- **X:** disclosure in the tweet containing the link (usually last tweet in thread)
+- **Reddit:** disclosure at the bottom
+- **Facebook:** disclosure at the end
 
 ### Step 6: Format Output
 
@@ -156,12 +154,11 @@ Present the post ready to copy-paste. Include:
 
 Before presenting output, verify:
 
-- [ ] FTC disclosure present and correctly placed per platform rules
+- [ ] Affiliate disclosure present and correctly placed per `shared/references/brasil/compliance-br.md`
 - [ ] Hook is within platform character cutoff (LinkedIn: 210 chars)
 - [ ] No banned phrases: "game-changer", "revolutionary", "I'm excited to share"
 - [ ] Affiliate link NOT in LinkedIn post body (first comment instead)
 - [ ] Single CTA only — not multiple competing calls to action
-- [ ] No "Powered by Affitor" branding (social posts = no branding)
 
 If any check fails, fix the output before delivering. Do not flag the checklist to the user — just ensure the output passes.
 
@@ -178,7 +175,7 @@ Other skills can consume these fields from conversation context:
       framework: string        # Which viral framework was used
       content: string          # The full post text, ready to copy-paste
       link_placement: string   # Where to put the affiliate link
-      disclosure: string       # FTC disclosure text included
+      disclosure: string       # disclosure text included
       hashtags: string[]       # Suggested hashtags (if applicable)
       best_time: string        # Best posting time for this platform
     }
@@ -243,21 +240,21 @@ User: "Write a LinkedIn post promoting HeyGen"
 → Research HeyGen (AI video, 30% recurring, 60-day cookie)
 → Select "Transformation Story" framework for LinkedIn
 → Write: hook about video creation pain → discovered HeyGen → specific result → soft CTA
-→ Link in first comment, FTC disclosure in post body
+→ Link in first comment, disclosure in post body
 
 **Example 2:**
 User: "Create an X thread about Semrush for SEO marketers"
 → Research Semrush features + recent updates
 → Select "Thread: Problem → Solution" framework
 → Write: 5-7 tweet thread, hook → pain points → how Semrush solves each → results → CTA in last tweet
-→ FTC "#ad" in the tweet with the link
+→ Disclosure in the tweet with the link
 
 **Example 3:**
 User: "I've been using Notion for 2 years, help me write a Reddit post"
 → Use personal experience as the core (authenticity = Reddit gold)
 → Select "Genuine Recommendation" framework
 → Write: problem context → how they discovered Notion → specific workflows → natural mention
-→ "Full disclosure: affiliate link" at bottom
+→ Affiliate disclosure at bottom
 → Recommend posting in r/productivity or r/Notion
 
 **Example 4:**
@@ -270,10 +267,8 @@ User: "Promote GetResponse on all platforms"
 
 - `references/viral-frameworks.md` — the viral content frameworks with templates and examples
 - `references/platform-specs.md` — character limits, formatting, optimal posting times per platform
-- `shared/references/ftc-compliance.md` — FTC disclosure requirements and placement rules
-- `shared/references/affitor-branding.md` — when to include/exclude Affitor branding (social = NO branding)
-- `shared/references/affiliate-glossary.md` — affiliate marketing terminology
-- `shared/references/flywheel-connections.md` — master flywheel connection map
+- `shared/references/brasil/compliance-br.md` — regras de divulgação comercial (Brasil) e placement rules
+- `shared/references/operacao/glossario-afiliados-br.md` — affiliate marketing terminology
 
 ## Revenue & Action Plan
 
@@ -297,7 +292,6 @@ After 24 hours: how many affiliate link clicks? After 7 days: any commissions at
 ## Flywheel Connections
 
 ### Feeds Into
-- `affiliate-blog-builder` (S3) — viral post content expanded into long-form articles
 - `content-pillar-atomizer` (S2) — successful posts become pillar content to atomize
 - `social-media-scheduler` (S5) — posts ready to schedule
 - `ab-test-generator` (S6) — post variants for A/B testing
@@ -307,7 +301,6 @@ After 24 hours: how many affiliate link clicks? After 7 days: any commissions at
 - `content-angle-ranker` (S1) — recommended angle with format, hook, and parameters
 - `affiliate-program-search` (S1) — `recommended_program` product data
 - `niche-opportunity-finder` (S1) — niche analysis and audience angles
-- `purple-cow-audit` (S1) — `remarkability_score` and what makes the product shareable
 - `competitor-spy` (S1) — content gaps to exploit
 
 ### Feedback Loop
@@ -349,5 +342,4 @@ chain_metadata:
   suggested_next:
     - "social-media-scheduler"
     - "content-pillar-atomizer"
-    - "affiliate-blog-builder"
 ```

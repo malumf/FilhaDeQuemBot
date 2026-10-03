@@ -11,7 +11,6 @@ version: "1.0.0"
 tags: ["affiliate-marketing", "meta", "planning", "compliance", "improvement", "feedback"]
 compatibility: "Claude Code, ChatGPT, Gemini CLI, Cursor, Windsurf, OpenClaw, any AI agent"
 metadata:
-  author: affitor
   version: "1.0"
   stage: S8-Meta
 ---
@@ -40,7 +39,7 @@ campaign:
   description: string          # REQUIRED — what was done (e.g., "Published 3 blog reviews
                                # of AI video tools, shared on LinkedIn and Reddit")
   duration: string             # OPTIONAL — how long (e.g., "2 weeks", "1 month")
-  skills_used: string[]        # OPTIONAL — which Affitor skills were used
+  skills_used: string[]        # OPTIONAL — which skills were used
   channels: string[]           # OPTIONAL — where content was distributed
 
 results:
@@ -114,7 +113,7 @@ Rank each improvement by:
 
 For each top improvement, specify:
 - What to change
-- Which Affitor skill to re-run
+- Which skill to re-run
 - Exact prompt modification for better results
 - Expected improvement (realistic estimate)
 
@@ -125,7 +124,7 @@ Before presenting output, verify:
 - [ ] Gap calculations accurate: expected minus actual
 - [ ] Root causes are evidence-based, not speculation
 - [ ] Impact (1-5) and effort (1-5) scores are justified with reasoning
-- [ ] Next steps reference specific Affitor skills by name
+- [ ] Next steps reference specific skills by name
 - [ ] Iteration plan has concrete timeline and measurable success metric
 
 If any check fails, fix the output before delivering. Do not flag the checklist to the user — just ensure the output passes.
@@ -153,7 +152,7 @@ diagnosis:
 
 improvements:
   - action: string             # what to do
-    skill: string              # which Affitor skill to use
+    skill: string              # which skill to use
     prompt: string             # exact prompt for the skill
     impact: number             # 1-5
     effort: number             # 1-5
@@ -184,12 +183,12 @@ iteration_plan:
 ### Example 1: Blog campaign with low conversions
 
 **User**: "I wrote 3 blog reviews of AI tools last month. Got 2,000 visitors but only 2 conversions ($14 total). What went wrong?"
-**Action**: Conversion rate 0.1% vs benchmark 1-3%. Diagnose: possible funnel leak (weak CTAs? disclosure too prominent? wrong products for audience?). Check traffic sources (SEO cold traffic needs more warming). Recommend: S6 (ab-test-generator) on CTAs, S6 (seo-audit) on content quality, S4 (landing-page-creator) as intermediate step.
+**Action**: Conversion rate 0.1% vs benchmark 1-3%. Diagnose: possible funnel leak (weak CTAs? disclosure too prominent? wrong products for audience?). Check traffic sources (SEO cold traffic needs more warming). Recommend: S6 (ab-test-generator) on CTAs, S6 (seo-audit) on content quality.
 
 ### Example 2: Social campaign with zero clicks
 
 **User**: "Posted 10 LinkedIn posts about Semrush. Lots of likes but nobody clicked my link."
-**Action**: Traffic-content mismatch. LinkedIn engagement ≠ clicks. Diagnose: link placement (probably in comments where nobody looks), content may be too educational without clear CTA, audience may not be in buying mode on LinkedIn. Recommend: S2 (viral-post-writer) with CTA-focused brief, S3 (affiliate-blog-builder) to create destination content, S7 (content-repurposer) to adapt for click-friendly platforms.
+**Action**: Traffic-content mismatch. LinkedIn engagement ≠ clicks. Diagnose: link placement (probably in comments where nobody looks), content may be too educational without clear CTA, audience may not be in buying mode on LinkedIn. Recommend: S2 (viral-post-writer) with CTA-focused brief, S7 (content-repurposer) to adapt for click-friendly platforms.
 
 ### Example 3: Chained from performance-report
 
@@ -199,9 +198,7 @@ iteration_plan:
 
 ## References
 
-- `shared/references/ftc-compliance.md` — Referenced when reviewing content quality. Read in Step 3.
-- `docs/affiliate-funnel-overview.md` — Funnel stage definitions for gap analysis. Read in Step 3.
-- `shared/references/flywheel-connections.md` — master flywheel connection map
+- `shared/references/brasil/compliance-br.md` — Referenced when reviewing content quality. Read in Step 3.
 
 ## Flywheel Connections
 

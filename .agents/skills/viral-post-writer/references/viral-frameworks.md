@@ -33,7 +33,7 @@ If you [do the thing the product helps with], [product name] is worth checking o
 
 [Link in the comments / check my bio]
 
-#ad | Affiliate link — I may earn a commission if you sign up.
+Contém link de afiliado: se você comprar, eu ganho comissão (sem custo a mais pra você).
 ```
 
 **Why it works:** Stories activate the brain's narrative processing. Specific numbers create credibility. The "discovery" moment makes it feel like a recommendation from a friend, not an ad.
@@ -135,7 +135,7 @@ Results after [timeframe]:
 Tweet 9:
 Try it here: [link]
 
-#ad
+Contém link de afiliado: se você comprar, eu ganho comissão (sem custo a mais pra você).
 ```
 
 **Why it works:** Threads get 3-5x more engagement than single tweets. Each tweet in the thread is a mini-hook. The problem-first structure makes readers nod along before the solution appears.
@@ -166,7 +166,7 @@ That's why I've been using [product] — it [specific value prop that supports t
 
 What's your take? [Question that invites responses]
 
-#ad
+Contém link de afiliado: se você comprar, eu ganho comissão (sem custo a mais pra você).
 ```
 
 **Why it works:** Hot takes polarize — people either agree loudly or disagree loudly. Both drive engagement. The product mention is subordinate to the opinion, so it doesn't feel promotional.
@@ -209,7 +209,7 @@ Not great for: [Who shouldn't use it]
 
 If anyone's curious: [link]
 
-Full disclosure: affiliate link
+Contém link de afiliado: se você comprar, eu ganho comissão (sem custo a mais pra você).
 ```
 
 **Why it works:** Reddit detects and punishes inauthentic content. Including cons builds trust. The "journey" establishes you as a real user, not a shill. This format regularly hits the top of subreddits.
@@ -251,7 +251,7 @@ That's [X-Y] hours/week I got back.
 
 [Soft CTA — "Link in comments if you want to try it"]
 
-#ad | Affiliate link
+Contém link de afiliado: se você comprar, eu ganho comissão (sem custo a mais pra você).
 ```
 
 **Why it works:** Contrast is one of the most powerful persuasion tools. The side-by-side format makes the value immediately visible. Numbers make it concrete and believable.
@@ -285,7 +285,7 @@ What's in your stack? Anything I'm missing?
 
 [Link to #1 in comments]
 
-#ad | Affiliate link for [product]
+Contém link de afiliado: se você comprar, eu ganho comissão (sem custo a mais pra você).
 ```
 
 **Why it works:** Lists get saved and shared. Putting the affiliate product at #1 feels natural in a list context. The "what do you use?" question drives high engagement in comments.

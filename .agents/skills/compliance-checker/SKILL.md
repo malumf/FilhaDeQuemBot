@@ -1,33 +1,32 @@
 ---
 name: compliance-checker
 description: >
-  Check affiliate content for FTC compliance and platform rules. Triggers on:
-  "check my content for compliance", "FTC disclosure check", "is this legal",
-  "review for compliance", "check affiliate disclosure", "am I FTC compliant",
+  Check affiliate content for disclosure compliance and platform rules. Triggers on:
+  "check my content for compliance", "disclosure check", "is this legal",
+  "review for compliance", "check affiliate disclosure", "am I compliant",
   "audit my content", "compliance review", "legal check", "platform rules check",
   "check before publishing", "disclosure audit", "review my ad copy".
 license: MIT
 version: "1.0.0"
-tags: ["affiliate-marketing", "meta", "planning", "compliance", "ftc", "disclosure"]
+tags: ["affiliate-marketing", "meta", "planning", "compliance", "disclosure"]
 compatibility: "Claude Code, ChatGPT, Gemini CLI, Cursor, Windsurf, OpenClaw, any AI agent"
 metadata:
-  author: affitor
   version: "1.0"
   stage: S8-Meta
 ---
 
 # Compliance Checker
 
-Audit affiliate content for FTC compliance, platform-specific rules, and legal requirements. Checks disclosure placement, prohibited claims, endorsement guidelines, and platform policies. Output is a compliance scorecard with issues, severity, and fix suggestions.
+Audit affiliate content for disclosure compliance, platform-specific rules, and prohibited claims, per `shared/references/brasil/compliance-br.md`. Checks disclosure placement, prohibited claims, endorsement guidelines, and platform policies. Output is a compliance scorecard with issues, severity, and fix suggestions.
 
 ## Stage
 
-S8: Meta — The FTC has fined affiliates $4.2M+ for undisclosed endorsements. One missing disclosure can result in legal action, platform bans, or program termination. This skill is the safety net — run it on any content before publishing to catch compliance issues before they become problems.
+S8: Meta — A missing or buried disclosure of the affiliate relationship destroys audience trust and risks platform penalties and program termination. This skill is the safety net — run it on any content before publishing to catch compliance issues before they become problems.
 
 ## When to Use
 
 - User wants to check content before publishing
-- User asks about FTC rules or affiliate disclosure requirements
+- User asks about disclosure rules or affiliate disclosure requirements
 - User is unsure if their content is compliant
 - User says "is this legal?", "do I need a disclosure?", "check my post"
 - User is preparing content for a platform with strict ad policies (Facebook, Google)
@@ -61,14 +60,14 @@ Scan content for:
 - Shortened URLs (bit.ly, etc.) that may hide affiliate links
 - Product mentions that imply a commercial relationship
 
-### Step 2: Check FTC Disclosure
+### Step 2: Check Disclosure
 
-Read `shared/references/ftc-compliance.md` for rules. Check:
+Read `shared/references/brasil/compliance-br.md` for rules. Check:
 - **Presence**: Is there a disclosure? (required if any affiliate link exists)
 - **Placement**: Is the disclosure before or near the affiliate link? (not buried at the bottom)
 - **Clarity**: Is it clear to a reasonable consumer? ("affiliate link" is clear; "partner" alone is not)
 - **Format by content type**:
-  - Social post: `#ad` or `Affiliate link` visible without expanding
+  - Social post: disclosure visible without expanding, in clear language (models in compliance-br.md)
   - Blog: Disclosure in the opening paragraph, above the fold
   - Landing page: Medium disclosure above the fold
   - Email: Disclosure near the affiliate link
@@ -90,7 +89,7 @@ If `platform` is provided, apply platform-specific rules:
 - **Reddit**: Self-promotion rules (10:1 ratio), must disclose in post
 - **Facebook/Instagram**: Branded Content tool, "Paid Partnership" label for ads
 - **Google Ads**: Clear commercial intent, no misleading claims, landing page requirements
-- **TikTok**: #ad or Paid Partnership toggle, no medical/financial advice claims
+- **TikTok**: disclosure text/overlay or Paid Partnership toggle, no medical/financial advice claims
 - **YouTube**: Verbal + written disclosure in first 30 seconds, "Includes paid promotion" checkbox
 
 ### Step 5: Score and Report
@@ -149,16 +148,16 @@ corrected_content: string      # full content with all fixes applied
 
 ## Error Handling
 
-- **No content provided**: "Paste the content you want me to check, or tell me which skill output to review. I'll check it for FTC compliance and platform rules."
-- **Content has no affiliate links**: "No affiliate links detected. FTC disclosure is only required for content with material connections (affiliate links, sponsored content, gifted products). Your content looks clean."
-- **Unknown platform**: "I don't have specific rules for [platform]. I'll check general FTC compliance. For platform-specific rules, check the platform's advertising policy page."
+- **No content provided**: "Paste the content you want me to check, or tell me which skill output to review. I'll check it for disclosure compliance and platform rules."
+- **Content has no affiliate links**: "No affiliate links detected. Disclosure is only needed for content with material connections (affiliate links, sponsored content, gifted products). Your content looks clean."
+- **Unknown platform**: "I don't have specific rules for [platform]. I'll check general disclosure compliance per `shared/references/brasil/compliance-br.md`. For platform-specific rules, check the platform's advertising policy page."
 
 ## Examples
 
 ### Example 1: Social post with missing disclosure
 
 **User**: "Check this tweet: 'Just tried HeyGen and it's incredible for creating AI videos. Use my link to get 10% off: heygen.com/ref/abc123'"
-**Action**: FAIL — no FTC disclosure. Fix: Add `#ad` before or after the link. Output corrected tweet with disclosure.
+**Action**: FAIL — no disclosure. Fix: add the short disclosure model from `shared/references/brasil/compliance-br.md` before or after the link. Output corrected tweet with disclosure.
 
 ### Example 2: Blog post with buried disclosure
 
@@ -168,18 +167,16 @@ corrected_content: string      # full content with all fixes applied
 ### Example 3: Facebook ad with income claim
 
 **User**: "Check this ad: 'I made $5,000 last month with this one tool. You can too! Click here to start earning.'"
-**Action**: FAIL — (1) income claim without typicality disclaimer, (2) no FTC disclosure, (3) Facebook requires Paid Partnership label. Output fixes for all three issues.
+**Action**: FAIL — (1) income claim without typicality disclaimer, (2) no disclosure, (3) Facebook requires Paid Partnership label. Output fixes for all three issues.
 
 ## References
 
-- `shared/references/ftc-compliance.md` — FTC affiliate disclosure requirements. Read in Step 2.
-- `shared/references/affitor-branding.md` — Branding guidelines. Referenced for page outputs.
-- `shared/references/flywheel-connections.md` — master flywheel connection map
+- `shared/references/brasil/compliance-br.md` — regras de divulgação comercial (Brasil). Read in Step 2.
 
 ## Revenue & Action Plan
 
 ### Expected Outcomes
-- **Revenue protection**: The FTC has fined affiliates $4.2M+ for undisclosed endorsements. A single violation can result in program termination (losing ALL commissions), platform bans, or legal action. Compliance isn't about making money — it's about not losing the money you've already earned
+- **Revenue protection**: A single missing disclosure can result in program termination (losing ALL commissions), platform penalties, and loss of audience trust. Compliance isn't about making money — it's about not losing the money you've already earned
 - **Benchmark**: Amazon Associates terminates 10,000+ affiliate accounts per year for policy violations. One missing disclosure on one post can end your entire affiliate business overnight
 - **Key metric to track**: Compliance score across ALL your published content. Target: 100% PASS. Any FAIL = fix before publishing. Any WARN = fix within 48 hours
 
@@ -190,7 +187,7 @@ corrected_content: string      # full content with all fixes applied
 4. **Audit your top 5 existing posts** — run this skill on your most-trafficked affiliate content to ensure they're compliant
 
 ### Track Your Results
-Run this skill monthly on all new content before publishing. Keep a compliance log — if the same issue appears 3+ times, update your content creation workflow to prevent it at the source (e.g., add FTC disclosure to your post template).
+Run this skill monthly on all new content before publishing. Keep a compliance log — if the same issue appears 3+ times, update your content creation workflow to prevent it at the source (e.g., add the disclosure to your post template).
 
 > **Next step — copy-paste this prompt:**
 > "Plan my entire affiliate funnel from research to revenue" → runs `funnel-planner`
@@ -202,7 +199,6 @@ Run this skill monthly on all new content before publishing. Keep a compliance l
 
 ### Fed By
 - All content-producing skills — content to check for compliance
-- `landing-page-creator` (S4) — landing pages to audit for FTC compliance
 - `email-drip-sequence` (S5) — emails to check for disclosure
 
 ### Feedback Loop

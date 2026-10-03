@@ -11,7 +11,6 @@ version: "1.0.0"
 tags: ["affiliate-marketing", "analytics", "optimization", "tracking", "reporting", "kpi"]
 compatibility: "Claude Code, ChatGPT, Gemini CLI, Cursor, Windsurf, OpenClaw, any AI agent"
 metadata:
-  author: affitor
   version: "1.0"
   stage: S6-Analytics
 ---
@@ -193,17 +192,13 @@ recommendations:
 ## References
 
 - `references/benchmarks.md` — KPI benchmarks by channel, program label thresholds, conversion rate benchmarks, timeline expectations, S1 scoring feedback loop
-- `shared/references/affiliate-glossary.md` — KPI definitions (EPC, CTR, ROAS). Referenced in Step 2.
-- `shared/references/case-studies.md` — Real-world case studies with conversion rates and timelines. Use as context for setting realistic expectations.
-- `shared/references/flywheel-connections.md` — master flywheel connection map
+- `shared/references/operacao/glossario-afiliados-br.md` — KPI definitions (EPC, CTR, ROAS). Referenced in Step 2.
 
 ## Flywheel Connections
 
 ### Feeds Into
 - `niche-opportunity-finder` (S1) — performance data identifies best-performing niches
 - `affiliate-program-search` (S1) — which program types convert best
-- `content-moat-calculator` (S3) — content performance metrics for moat progress
-- `content-decay-detector` (S3) — traffic decline data for decay detection
 
 ### Fed By
 - `conversion-tracker` (S6) — conversion data for reports
@@ -221,5 +216,4 @@ chain_metadata:
   suggested_next:
     - "affiliate-program-search"
     - "niche-opportunity-finder"
-    - "content-decay-detector"
 ```

@@ -39,7 +39,7 @@ Quick reference for character limits, formatting, link behavior, and optimal pos
 ### X Formatting Tips
 - Thread format: number tweets (1/, 2/, etc.) or use 🧵 emoji on first tweet
 - Each tweet should standalone — some people see individual tweets, not the full thread
-- Last tweet = CTA + link + #ad disclosure
+- Last tweet = CTA + link + disclosure
 - Quote-tweet your own thread to boost it later
 - Reply to your own thread with additional context (algorithm treats it as engagement)
 
@@ -54,7 +54,7 @@ Quick reference for character limits, formatting, link behavior, and optimal pos
 | Link behavior | Self-post (text) preferred over link posts for recommendations. Link in body is fine |
 | Formatting | Markdown supported. Use headers, bullets, bold. Well-formatted posts get more upvotes |
 | Best time | Mon-Wed, 6-9am EST (early risers + Europe) |
-| Disclosure | "Full disclosure: affiliate link" at the bottom. Clear and honest |
+| Disclosure | Short affiliate disclosure at the bottom (see `shared/references/brasil/compliance-br.md`). Clear and honest |
 
 ### Reddit Critical Rules
 - **Check subreddit rules FIRST** — many ban affiliate links or self-promotion
